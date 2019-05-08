@@ -1,0 +1,30 @@
+{
+  "name": "homecare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index",
+    "start": "node index.js",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \" npm test\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmaniAlamri/homecare.git"
+  },
+  "author": "Yasser Amani Reema Lamya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmaniAlamri/homecare/issues"
+  },
+  "homepage": "https://github.com/AmaniAlamri/homecare#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongoose": "^5.5.6",
+    "passport-local": "^1.0.0"
+  }
+}
