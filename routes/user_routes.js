@@ -50,6 +50,21 @@ router.get('/appointment/doctor/:id', (req, res) => {
 })
 
 
+//display all appointments belong to one patient
+router.get('/appointment/patient/:id', (req, res) => {
+  console.log(req.params.id)
+  Appointment.find({ patient_id: req.params.id })
+  .then(appointment =>{
+    res.status(200).json({ appointment : appointment })
+    return false
+  })
+  .catch(err => {
+    res.json({ message: err })
+    return false
+  })
+})
+
+
 
 //create appointment
 router.post('/appointment', (req, res)=>{
