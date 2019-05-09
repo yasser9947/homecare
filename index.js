@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 4000
 const app = express()
 const mongoose = require('mongoose');
 var cors = require('cors')
-const user_routes=require('./routes/user_routes')
+const user_routes = require('./routes/user_routes')
 
 
 //models
@@ -16,8 +16,8 @@ const user_routes=require('./routes/user_routes')
 
 
 //middleware
-app.use(cors()) 
-app.use(express.urlencoded({ extended: false }));   
+app.use(cors())
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 //Body parser allows json to be passed into express
 // app.use(bodyParser.urlencoded({ extended: false }));    
@@ -29,22 +29,22 @@ app.use(express.static('public'));
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/home_care',
-{useNewUrlParser: true})
-.then(()=> {console.log('db connected')},
- err => { console.log(err)})
+    { useNewUrlParser: true })
+    .then(() => { console.log('db connected') },
+        err => { console.log(err) })
 //fix database index from deprecated mongoose
 mongoose.set('useCreateIndex', true)
 
-app.use('/user',user_routes)
+app.use('/user', user_routes)
 
 //cannot find route
 app.get('/', (req, res) => {
     console.log("server is running")
     res.send("server is running")
-    })
+})
 
 app.use('*', (req, res) => {
-    res.status(404).json({message : "Data not found!"})
+    res.status(201).json({ message: "Data not found!" })
 })
 
 app.listen(PORT, () => console.log(`connected to ${PORT}`))

@@ -1,6 +1,18 @@
 
-
+.fixApp{
+  /* display: flex; */
+}
 .navlogo{
   background-color: #e3f2fd ; 
 
 }
+.rightNav{
+margin: 0px 10px;
+
+}
+.thenave{
+  margin: 0px 10px;
+}
+/* .medle{
+  height: 800px;
+} */
