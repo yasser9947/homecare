@@ -1,5 +1,6 @@
 const express = require('express')
 const router = require('express').Router()
+const passport = require('../helpers/passport')
 
 //models
 const Appointment=require('../models/appointment')
@@ -10,6 +11,62 @@ const User=require('../models/user')
 router.use(express.json())
 
 //router
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next()
+  }else{
+    res.redirect('/users/login')
+  }
+}
+
+
+
+router.get('/profile', isLoggedIn, (req, res)=>{
+  console.log(req.user)
+  res.render('users/profile')
+})
+
+router.post('/register',(req, res)=> {
+  let user = new User(req.body)
+
+  user.save()
+  .then(() => {
+  //  res.send({message: "user saved!", user: user})
+    res.redirect('/users')
+  })
+  .catch(err => {
+   console.log(err)
+  })
+
+})
+
+
+router.get('/register',(req, res)=>{
+  res.render('users/register')
+})
+
+router.get('/login',(req, res)=>{
+  res.render('users/login')
+})
+
+router.post('/login', 
+  passport.authenticate('local', 
+    { 
+      successRedirect : '/users/profile',
+      failureRedirect: '/users/login' 
+    }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+router.get('/logout', (req, res)=>{
+  req.logout()
+  res.redirect('/users/login')
+})
+
+
+
+
 
 //..................appointment..................
 
@@ -152,8 +209,8 @@ router.post('/', (req, res)=>{
   router.get('/', (req, res) => {
 
     User.find({})
-    .then(user =>{
-      res.status(200).json({ user : user })
+    .then(users =>{
+      res.status(200).json({ users : users })
       return false
     })
     .catch(err => {

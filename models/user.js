@@ -15,6 +15,29 @@ const userSchema = new Schema({
 },{timestamps : true})
 
 
+userSchema.pre('save', function(next){
+    let user = this
+   
+     if(user.password && user.isModified()){
+      bcrypt.hash(user.password, saltRounds).then( hash =>{
+       user.password = hash
+       next()
+      }).catch(err => console.log(err))
+    }
+   })
+   
+   
+   userSchema.methods.verifyPassword = (plainPassword, hashedPassword, next) => {
+   
+     bcrypt.compare(plainPassword, hashedPassword, (err, response) => {
+       if(err) { 
+         return next(err) 
+       }
+       return next(null, response)
+     })
+   }
+
+   
 const User = mongoose.model('User', userSchema)
 module.exports = User
 
