@@ -6,9 +6,10 @@ const app = express()
 const mongoose = require('mongoose');
 var cors = require('cors')
 const user_routes=require('./routes/user_routes')
-const expressLayout = require('express-ejs-layouts')
-const passport = require('passport')
 const session = require('express-session')
+const jwt = require('jsonwebtoken')
+const passport = require('passport')
+
 
 
 //models
@@ -28,23 +29,24 @@ app.use(express.json())
 app.use(express.static('public'));
 //allows json to be sent to via req express
 
-app.use(expressLayout)
 
 
 app.use(session({
-    secret : process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
+    secret : "test",
+    resave : false,
+    saveUninitialized : true
    }))
    
    app.use(passport.initialize())
    app.use(passport.session())
-   
-   app.use((req, res, next)=>{
-    res.locals.currentUser = req.user
-    next()
-   })
 
+
+
+   //routes
+app.use('/user/auth', require('./routes/auth.routes'))
+app.use('/user/', passport.authenticate('jwt', {session: false}), require('./routes/user_routes'))
+
+   
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/home_care',
