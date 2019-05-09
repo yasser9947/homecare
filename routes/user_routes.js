@@ -50,6 +50,21 @@ router.get('/appointment/doctor/:id', (req, res) => {
 })
 
 
+//display all appointments belong to one patient
+router.get('/appointment/patient/:id', (req, res) => {
+  console.log(req.params.id)
+  Appointment.find({ patient_id: req.params.id })
+  .then(appointment =>{
+    res.status(200).json({ appointment : appointment })
+    return false
+  })
+  .catch(err => {
+    res.json({ message: err })
+    return false
+  })
+})
+
+
 
 //create appointment
 router.post('/appointment', (req, res)=>{
@@ -127,26 +142,26 @@ router.delete('/appointment/:id', (req, res)=>{
 //..................user..................
 
 //create new user 
-router.post('/', (req, res)=>{
+// router.post('/', (req, res)=>{
 
-  let data = {
-    email : req.body.email,
-    username : req.body.username,
-    password : req.body.password,
-    nationality:req.body.nationality,
-    ID:req.body.ID,
-    user_rule:req.body.user_rule
-    }
+//   let data = {
+//     email : req.body.email,
+//     username : req.body.username,
+//     password : req.body.password,
+//     nationality:req.body.nationality,
+//     ID:req.body.ID,
+//     user_rule:req.body.user_rule
+//     }
   
-    let user = new User(data)
-    user.save()
-    .then(()=> {
-      res.status(200).json({ user : user, message: "saved"})
-    })
-    .catch(err => {
-      res.send({ message : err})
-    })
-  })
+//     let user = new User(data)
+//     user.save()
+//     .then(()=> {
+//       res.status(200).json({ user : user, message: "saved"})
+//     })
+//     .catch(err => {
+//       res.send({ message : err})
+//     })
+//   })
 
 //display all users
   router.get('/', (req, res) => {
@@ -184,7 +199,6 @@ router.post('/', (req, res)=>{
         res.json({message: "there is a problem"})
     })
 })
-
 //delete user
   router.delete('/:id', (req, res)=>{
     User.findByIdAndDelete(req.params.id)
@@ -195,5 +209,4 @@ router.post('/', (req, res)=>{
         res.json({message: "delete done"})
     })   
 })
-  
 module.exports = router
