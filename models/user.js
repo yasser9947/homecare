@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
 const saltRounds = 10
 const bcrypt = require('bcrypt')
+
 
 
 const userSchema = new Schema({
@@ -11,6 +13,7 @@ const userSchema = new Schema({
  nationality:{type: String},
  user_rule:{type: Number,default:1},//0 admin , 1 patient, 2 doctor
  ID:{type:Number}
+
 
 },{timestamps : true})
 
