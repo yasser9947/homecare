@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const bcrypt = require('bcrypt')
-const saltRounds = 10 
+
 
 const userSchema = new Schema({
  email : { type: String, required: true, unique : true},
@@ -10,7 +9,6 @@ const userSchema = new Schema({
  nationality:{type: String},
  user_rule:{type: Number,default:1},//0 admin , 1 patient, 2 doctor
  ID:{type:Number},
- //appointments : [{ type: Schema.Types.ObjectId, ref: 'Appointment' }]
 
 },{timestamps : true})
 
