@@ -1,42 +1,50 @@
+require('dotenv').config()
 const express = require('express')
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4000
-const server = express()
-
-//const session = require('express-session')
-//jwt and passports
-// const jwt = require('jsonwebtoken')
-//const passport = require('passport')
-//mongoose connection
-//const mongooseConnect = require('./config/mongodb')
+const app = express()
+const mongoose = require('mongoose');
+var cors = require('cors')
+const user_routes=require('./routes/user_routes')
 
 
-//allows json to be sent to via request express
-server.use(express.json())
-
-//create session for passport
-// server.use(session({
-//  secret : "test",
-//  resave : false,
-//  saveUninitialized : true
-// }))
-
-// server.use(passport.initialize())
-// server.use(passport.session())
-
-
-//routes
-// server.use('/api/auth', require('./routes/auth.routes'))
-// server.use('/api/games', passport.authenticate('jwt', {session: false}), require('./routes/games.routes'))
+//models
+// const Appointment=require('./models/appointment')
+// const Medicine=require('./models/medicine')
+// const User=require('./models/user')
 
 
 
+//middleware
+app.use(cors()) 
+app.use(express.urlencoded({ extended: false }));   
+app.use(express.json())
+//Body parser allows json to be passed into express
+// app.use(bodyParser.urlencoded({ extended: false }));    
+// app.use(bodyParser.json());
+app.use(express.static('public'));
+//allows json to be sent to via req express
+
+
+
+//connect to mongoose
+mongoose.connect('mongodb://localhost/home_care',
+{useNewUrlParser: true})
+.then(()=> {console.log('db connected')},
+ err => { console.log(err)})
+//fix database index from deprecated mongoose
+mongoose.set('useCreateIndex', true)
+
+app.use('/user',user_routes)
 
 //cannot find route
-server.get('/', (request, response) => {
+app.get('/', (req, res) => {
     console.log("server is running")
-   })
-server.use('*', (request, response) => {
- response.status(404).json({message : "Data not found!"})
+    res.send("server is running")
+    })
+
+app.use('*', (req, res) => {
+    res.status(404).json({message : "Data not found!"})
 })
 
-server.listen(PORT, () => console.log(`connected to ${PORT}`))
+app.listen(PORT, () => console.log(`connected to ${PORT}`))
