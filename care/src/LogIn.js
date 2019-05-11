@@ -1,26 +1,34 @@
 import React, { Component } from 'react'
+import { Input, Col, FormGroup, Label, Button} from '../node_modules/reactstrap'
 
 export default class LogIn extends Component {
+
+  submitHandler = (e) => {
+
+console.log(e)
+
+  }
+
+  // ChangeHandler = (e) =>{
+
+    
+  // }
   render() {
     return (
       <div>
-        <h1>Log in page</h1>
-        <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <>
+    <Col sm={3} md={4} className="mx-auto">
+     <FormGroup>
+          <Label for="exampleEmail" sm={2}>Email</Label>
+        <Input name="email" />
+     </FormGroup>
+     <FormGroup>
+          <Label for="exampleEmail" sm={2}>Password</Label>
+          <Input name="password" type="password" />
+      </FormGroup>
+      <Button  color="primary" size="lg" block> Login </Button>
+     </Col>
+    </>
       </div>
     )
   }

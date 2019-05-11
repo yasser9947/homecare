@@ -1,28 +1,37 @@
 import React, { Component } from 'react'
 import Spinner from 'react-bootstrap/Spinner'
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+
 
 export default class FOQ extends Component {
+
+
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
+
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
   render() {
+
+
+
     return (
       <div>
- <>
-  <Spinner animation="border" variant="primary" />
-  <Spinner animation="border" variant="secondary" />
-  <Spinner animation="border" variant="success" />
-  <Spinner animation="border" variant="danger" />
-  <Spinner animation="border" variant="warning" />
-  <Spinner animation="border" variant="info" />
-  <Spinner animation="border" variant="light" />
-  <Spinner animation="border" variant="dark" />
-  <Spinner animation="grow" variant="primary" />
-  <Spinner animation="grow" variant="secondary" />
-  <Spinner animation="grow" variant="success" />
-  <Spinner animation="grow" variant="danger" />
-  <Spinner animation="grow" variant="warning" />
-  <Spinner animation="grow" variant="info" />
-  <Spinner animation="grow" variant="light" />
-  <Spinner animation="grow" variant="dark" />
-</>;
+    <div>
+        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>problem1</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis consequuntur recusandae aspernatur facere natus maxime suscipit dolore possimus repellendus esse. Explicabo, ex. Aut ducimus iusto maiores voluptatem dignissimos mollitia unde!
+            </CardBody>
+          </Card>
+        </Collapse>
+      
+      </div>
 
       </div>
     )

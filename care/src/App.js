@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom';
+} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'
+
 import './App.css';
 import HomePage from './HomePage'
 import LogIn from './LogIn'
@@ -12,35 +13,116 @@ import SingUp from './SingUp'
 import ContactUS from './ContactUS'
 import FOQ from './FOQ'
 
+
+// 
+let header = {
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${getToken()}`
+  }
+}
+
+
 export default class App extends Component {
   state = {
-    cares: []
+    users: [],
+    appointment: [],
+    medicine : [] ,
+    user: "",
+    errorMsg: '',
+    isAuthenticated: false,
+    hasError: false,
 
   }
   // get the json file axios 
-  getCare = () => {
+  changeHandler = (e) => {
+    console.log(e.target.value);
+    let data = { ...this.state }
+    data.name = e.target.value
 
-    axios.get("http://localhost:4000/appointment")
-      .then(data => {
-        console.log(data.data)
-        console.log("running")
-        // let temp = { ...this.state } // copy
-        // temp.cares = data.data.cares // set to api response
-        // this.setState(temp) //set the state
+    this.setState(data)
+// console.log(this.state);
+
+  }
+
+  getGames = () => {
+    axios.get('/api/games', header)
+      .then(response => {
+        console.log(response.data)
+        if (response.data.games.length > 0) {
+
+          let data = { ...this.state }
+          data.games = response.data.games
+
+          this.setState(data)
+        }
       })
-      .catch(err => console.log(err))
-  }
-  // load on component mount
-
-  componentDidMount() {
-    this.getCare()
+      .catch()
   }
 
+  submitHandler = (e) => {
+    axios.post('/api/games', { name: this.state.gamename }, header)
+      .then(response => {
+
+        let data = { ...this.state }
+        data.games.push(response.data.game)
+
+        this.setState(data)
+      })
+      .catch()
+  }
+
+  loginHandler = (e) => {
+    axios.post('/api/auth/login', { email: this.state.email, password: this.state.password })
+      .then(response => {
+        console.log(response.data)
+        if (response.data.token) {
+          setToken(response.data.token)
+
+          let data = { ...this.state }
+          data.user = response.data.user
+          data.isAuthenticated = true
+          data.hasError = false
+
+          this.setState(data)
+
+          this.getGames()
+        }
+
+      })
+      .catch(err => {
+        let data = { ...this.state }
+        data.hasError = true
+        this.setState(data)
+
+      })
+  }
+
+  logout = () => {
+    logout()
+    let data = { ...this.state }
+    data.isAuthenticated = false
+    data.user = ""
+    data.email = ""
+    data.password = ""
+    data.games = []
+
+    this.setState(data)
+  }
+  registerHandler = (e) => {
+    axios.post('/api/auth/', {})
+      .then(response => {
+
+      })
+      .catch()
+  }
 
   render() {
-
+    
+console.log(this.state.name);
 
     return (
+      
       <Router>
 
         <div class="fixApp">
@@ -54,11 +136,12 @@ export default class App extends Component {
 
 
 
-
+{/*                   <LogIn  />
+ */}
 
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/"> Home Page</Link>{' '}</a></li>
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
                   <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">rigester</Link>{' '}</a></li>
 
 
@@ -71,7 +154,8 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             <Route path="/SingUp" component={SingUp} />
-            <Route path="/LogIn" component={LogIn} />
+            <Route path="/LogIn" render={() => <LogIn changeHandler = {this.changeHandler} />} />
+
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
 
