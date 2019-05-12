@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import {
+import React, { Component } from 'react'; import axios from 'axios'; import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'
-import { Container, Row, Button, Col, Alert } from 'reactstrap';
-
-import './App.css';
-import HomePage from './HomePage'
-import LogIn from './LogIn'
-import SingUp from './SingUp'
-import ContactUS from './ContactUS'
-import FOQ from './FOQ'
-import AdminTool from './admin_tool'
-import UserProfile from './UserProfile'
-
+} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth' ;import { Container, Row, Button, Col, Alert } from 'reactstrap';
+import './App.css'; import HomePage from './HomePage' ; import LogIn from './LogIn' ;import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import AdminTool from './admin_tool'; import UserProfile from './UserProfile'
+import {  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import ModalExample from './js/jsHomePage'
 // 
 let header = {
   headers: {
@@ -103,13 +93,14 @@ export default class App extends Component {
       })
       .catch(err => (console.log("yaa not working" + err)))
   }
+// 
 
   
   render() {
-
+   
     const showLogin = (!this.state.isAuthenticated) ?<Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
 
-    const Logout = (this.state.isAuthenticated) ? <Link onClick={this.logout} to="/">Logout</Link> : <Link className="thenave" to="/SingUp">rigester</Link>
+    const Logout = (this.state.isAuthenticated) ?  <Link ><ModalExample logout={this.logout} /></Link>: <Link className="thenave" to="/SingUp">rigester</Link>
 
   
 
@@ -129,13 +120,12 @@ export default class App extends Component {
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
-                  <li class="breadcrumb-item"><a href="#"> {Logout}{' '}</a></li>
+                  <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
               </nav>
             </div>
           </nav>
-
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
