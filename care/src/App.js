@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'
+import { Container, Row, Button, Col, Alert } from 'reactstrap';
 
 import './App.css';
 import HomePage from './HomePage'
@@ -13,7 +14,7 @@ import SingUp from './SingUp'
 import ContactUS from './ContactUS'
 import FOQ from './FOQ'
 import AdminTool from './admin_tool'
-
+import UserProfile from './UserProfile'
 
 // 
 let header = {
@@ -109,6 +110,15 @@ export default class App extends Component {
 
   render() {
 
+    const showLogin = (!this.state.isAuthenticated) ?<Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
+
+    const Logout = (this.state.isAuthenticated) ? <Link onClick={this.logout} to="/">Logout</Link> : <Link className="thenave" to="/SingUp">rigester</Link>
+
+  
+    
+
+    console.log(this.state)
+
     console.log(this.state);
 
     return (
@@ -132,10 +142,10 @@ export default class App extends Component {
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">rigester</Link>{' '}</a></li>
+                  <li class="breadcrumb-item"><a href="#"> {Logout}{' '}</a></li>
 
 
-                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn">log in</Link>{' '}</li>
+                  <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
               </nav>
             </div>
@@ -143,6 +153,8 @@ export default class App extends Component {
 
           <div class="medle">
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/UserProfile" component={UserProfile} />
+
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} login ={this.loginHandler} />} />
             {/* registerHandler */}
