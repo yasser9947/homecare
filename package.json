@@ -6,8 +6,8 @@
   "scripts": {
     "test": "nodemon index",
     "start": "node index.js",
-    "frontend": "cd frontend && npm start",
-    "dev": "concurrently \" npm test\" \"npm run frontend\""
+    "care": "cd care && npm start",
+    "dev": "concurrently \" npm test\" \"npm run care\""
   },
   "repository": {
     "type": "git",

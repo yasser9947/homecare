@@ -1,11 +1,11 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4001
 const app = express()
 const mongoose = require('mongoose');
 var cors = require('cors')
-const user_routes=require('./routes/user_routes')
+const user_routes = require('./routes/user_routes')
 const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
@@ -32,21 +32,17 @@ app.use(express.static('public'));
 
 
 app.use(session({
-    secret : "test",
-    resave : false,
-    saveUninitialized : true
-   }))
-   
-   app.use(passport.initialize())
-   app.use(passport.session())
+    secret: "test",
+    resave: false,
+    saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 
-   //routes
-app.use('/user/auth', require('./routes/auth.routes'))
-app.use('/user/', passport.authenticate('jwt', {session: false}), require('./routes/user_routes'))
 
-   
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/home_care',
@@ -55,6 +51,13 @@ mongoose.connect('mongodb://localhost/home_care',
         err => { console.log(err) })
 //fix database index from deprecated mongoose
 mongoose.set('useCreateIndex', true)
+
+//routes
+app.use('/user/auth', require('./routes/auth.routes'))
+app.use('/user/', passport.authenticate('jwt', { session: false }), require('./routes/user_routes'))
+
+
+
 
 app.use('/user', user_routes)
 

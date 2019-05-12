@@ -9,10 +9,7 @@ console.log(e)
 
   }
 
-  // ChangeHandler = (e) =>{
-
-    
-  // }
+  
   render() {
     return (
       <div>
@@ -20,7 +17,7 @@ console.log(e)
     <Col sm={3} md={4} className="mx-auto">
      <FormGroup>
           <Label for="exampleEmail" sm={2}>Email</Label>
-        <Input name="email" />
+        <Input name="email" onChange ={this.props.changeHandler} />
      </FormGroup>
      <FormGroup>
           <Label for="exampleEmail" sm={2}>Password</Label>

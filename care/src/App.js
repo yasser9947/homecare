@@ -27,7 +27,7 @@ export default class App extends Component {
   state = {
     users: [],
     appointment: [],
-    medicine : [] ,
+    medicine: [],
     user: "",
     errorMsg: '',
     isAuthenticated: false,
@@ -36,32 +36,19 @@ export default class App extends Component {
   }
   // get the json file axios 
   changeHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     let data = { ...this.state }
-    data.name = e.target.value
+    data[e.target.name] = e.target.value
+    data.user_rule = 1
 
     this.setState(data)
-// console.log(this.state);
+    // console.log(this.state);
 
   }
 
-  getGames = () => {
-    axios.get('/api/games', header)
-      .then(response => {
-        console.log(response.data)
-        if (response.data.games.length > 0) {
-
-          let data = { ...this.state }
-          data.games = response.data.games
-
-          this.setState(data)
-        }
-      })
-      .catch()
-  }
 
   submitHandler = (e) => {
-    axios.post('/api/games', { name: this.state.gamename }, header)
+    axios.post('loca/api/appointment', { name: this.state.gamename }, header)
       .then(response => {
 
         let data = { ...this.state }
@@ -110,19 +97,39 @@ export default class App extends Component {
     this.setState(data)
   }
   registerHandler = (e) => {
-    axios.post('/api/auth/', {})
+    console.log()
+    let user = { 
+      email: this.state.email,
+      username : this.state.username, 
+      password: this.state.password, 
+      nationality: this.state.nationality, 
+      user_rule: this.state.user_rule 
+    }
+
+    axios.post('http://localhost:4001/user/auth/register', user)
       .then(response => {
+        // let data = { ...this.state }
+        // data.email = response.data.email
+        // data.password =response.data.password
+        // data.nationality =response.data.nationality
+        // data.user_rule = response.data.user_rule
+        // data.isAuthenticated = true
+        // data.hasError = false
+        // console.log("running thr register")
+
+        console.log(response)
+        console.log("masseg")
 
       })
-      .catch()
+      .catch(err => (console.log("yaa not working" + err)))
   }
 
   render() {
-    
-console.log(this.state.name);
+
+    console.log(this.state);
 
     return (
-      
+
       <Router>
 
         <div class="fixApp">
@@ -136,7 +143,7 @@ console.log(this.state.name);
 
 
 
-{/*                   <LogIn  />
+              {/*                   <LogIn  />
  */}
 
               <nav aria-label="breadcrumb">
@@ -153,9 +160,9 @@ console.log(this.state.name);
 
           <div class="medle">
             <Route exact path="/" component={HomePage} />
-            <Route path="/SingUp" component={SingUp} />
-            <Route path="/LogIn" render={() => <LogIn changeHandler = {this.changeHandler} />} />
-
+            <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
+            <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} />} />
+            {/* registerHandler */}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
 
@@ -186,10 +193,10 @@ console.log(this.state.name);
 
                   <ul className="list-unstyled">
                     <li>
-                      <a href="#!"><Link  to="/ContactUS">ContactUS</Link>{' '}</a>
+                      <a href="#!"><Link to="/ContactUS">ContactUS</Link>{' '}</a>
                     </li>
-                   
-                      <a href="#!"><Link  to="/FOQ">FOQ</Link>{' '}</a>
+
+                    <a href="#!"><Link to="/FOQ">FOQ</Link>{' '}</a>
                     <li>
                       <a href="#!">Link 3</a>
                     </li>
@@ -206,7 +213,7 @@ console.log(this.state.name);
 
             </div>
 
-          
+
 
           </footer>
 
