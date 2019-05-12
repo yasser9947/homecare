@@ -47,20 +47,19 @@ export default class App extends Component {
   }
 
 
-  submitHandler = (e) => {
-    axios.post('loca/api/appointment', { name: this.state.gamename }, header)
-      .then(response => {
+  // submitHandler = (e) => {
+  //   axios.post('loca/api/appointment', { name:}, header)
+  //     .then(response => {
 
-        let data = { ...this.state }
-        data.games.push(response.data.game)
+  //       let data = { ...this.state }
 
-        this.setState(data)
-      })
-      .catch()
-  }
+  //       this.setState(data)
+  //     })
+  //     .catch()
+  // }
 
   loginHandler = (e) => {
-    axios.post('/api/auth/login', { email: this.state.email, password: this.state.password })
+    axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
         if (response.data.token) {
@@ -74,13 +73,16 @@ export default class App extends Component {
           this.setState(data)
 
           this.getGames()
+          console.log(response)
+
         }
 
       })
       .catch(err => {
         let data = { ...this.state }
         data.hasError = true
-        this.setState(data)
+        this.setState( data)
+        console.log("eroor")
 
       })
   }
@@ -161,7 +163,7 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
-            <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} />} />
+            <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} login ={this.loginHandler} />} />
             {/* registerHandler */}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />

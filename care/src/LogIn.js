@@ -21,9 +21,9 @@ console.log(e)
      </FormGroup>
      <FormGroup>
           <Label for="exampleEmail" sm={2}>Password</Label>
-          <Input name="password" type="password" />
+          <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
-      <Button  color="primary" size="lg" block> Login </Button>
+      <Button onClick= {this.props.login} color="primary" size="lg" block> Login </Button>
      </Col>
     </>
       </div>
