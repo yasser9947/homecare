@@ -47,27 +47,21 @@ export default class App extends Component {
     // console.log(this.state);
 
   }
-
-
+// log in method
   loginHandler = (e) => {
     axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
         if (response.data.token) {
           setToken(response.data.token)
-
           let data = { ...this.state }
           data.user = response.data.user
           data.isAuthenticated = true
           data.hasError = false
-
           this.setState(data)
-
           this.getGames()
           console.log(response)
-
         }
-
       })
       .catch(err => {
         let data = { ...this.state }
@@ -77,7 +71,7 @@ export default class App extends Component {
 
       })
   }
-
+// log out method
   logout = () => {
     logout()
     let data = { ...this.state }
@@ -89,6 +83,7 @@ export default class App extends Component {
 
     this.setState(data)
   }
+  // register method
   registerHandler = (e) => {
     console.log()
     let user = { 
@@ -108,6 +103,7 @@ export default class App extends Component {
       .catch(err => (console.log("yaa not working" + err)))
   }
 
+  
   render() {
 
     const showLogin = (!this.state.isAuthenticated) ?<Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
@@ -115,7 +111,6 @@ export default class App extends Component {
     const Logout = (this.state.isAuthenticated) ? <Link onClick={this.logout} to="/">Logout</Link> : <Link className="thenave" to="/SingUp">rigester</Link>
 
   
-    
 
     console.log(this.state)
 
@@ -127,24 +122,13 @@ export default class App extends Component {
 
         <div class="fixApp">
           {/* navbar */}
-
           <nav className="navbar navbar-light navlogo" >
-
             <img src="http://beyondfaithhomecare.com/wp-content/themes/beyondfaith/images/LifeCareHomeCare_COLOR_logo_BF%20Tag-01.png" className="" height='80' width='170' alt="" />
-
             <div className="rightNav">
-
-
-
-              {/*                   <LogIn  />
- */}
-
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
                   <li class="breadcrumb-item"><a href="#"> {Logout}{' '}</a></li>
-
-
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
               </nav>
@@ -153,7 +137,8 @@ export default class App extends Component {
 
           <div class="medle">
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/UserProfile" component={UserProfile} />
+            {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
+            <Route path="/UserProfile" render={() => <UserProfile  user={this.state}  />} />
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} login ={this.loginHandler} />} />
@@ -162,35 +147,21 @@ export default class App extends Component {
             <Route path="/FOQ" component={FOQ} />
             <Route path="/AdminTool" component={AdminTool} />
           </div>
-
-
-
           {/* footer */}
-
           <footer className="page-footer font-small blue pt-4">
-
             <div className="container-fluid text-center text-md-left">
-
               <div className="row">
-
                 <div className="col-md-6 mt-md-0 mt-3">
-
                   <h5 className="text-uppercase">Footer Content</h5>
                   <p>Here you can use rows and columns to organize your footer content.</p>
-
                 </div>
-
                 <hr className="clearfix w-100 d-md-none pb-3" />
-
                 <div className="col-md-3 mb-md-0 mb-3">
-
                   <h5 className="text-uppercase">Links</h5>
-
                   <ul className="list-unstyled">
                     <li>
                       <a href="#!"><Link to="/ContactUS">ContactUS</Link>{' '}</a>
                     </li>
-
                     <a href="#!"><Link to="/FOQ">FOQ</Link>{' '}</a>
                     <li>
                       <a href="#!">Link 3</a>
@@ -202,19 +173,10 @@ export default class App extends Component {
                       <a href="#!"><Link  to="/AdminTool">Admin Dashboard</Link>{' '}</a>
                     </li>
                   </ul>
-
                 </div>
-
-
-
               </div>
-
             </div>
-
-
-
           </footer>
-
         </div>
 
       </Router>
