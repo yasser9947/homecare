@@ -12,6 +12,7 @@ import LogIn from './LogIn'
 import SingUp from './SingUp'
 import ContactUS from './ContactUS'
 import FOQ from './FOQ'
+import AdminTool from './admin_tool'
 
 
 // 
@@ -46,17 +47,6 @@ export default class App extends Component {
 
   }
 
-
-  // submitHandler = (e) => {
-  //   axios.post('loca/api/appointment', { name:}, header)
-  //     .then(response => {
-
-  //       let data = { ...this.state }
-
-  //       this.setState(data)
-  //     })
-  //     .catch()
-  // }
 
   loginHandler = (e) => {
     axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
@@ -110,15 +100,6 @@ export default class App extends Component {
 
     axios.post('http://localhost:4001/user/auth/register', user)
       .then(response => {
-        // let data = { ...this.state }
-        // data.email = response.data.email
-        // data.password =response.data.password
-        // data.nationality =response.data.nationality
-        // data.user_rule = response.data.user_rule
-        // data.isAuthenticated = true
-        // data.hasError = false
-        // console.log("running thr register")
-
         console.log(response)
         console.log("masseg")
 
@@ -167,7 +148,7 @@ export default class App extends Component {
             {/* registerHandler */}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
-
+            <Route path="/AdminTool" component={AdminTool} />
           </div>
 
 
@@ -204,6 +185,9 @@ export default class App extends Component {
                     </li>
                     <li>
                       <a href="#!">Link 4</a>
+                    </li>
+                    <li>
+                      <a href="#!"><Link  to="/AdminTool">Admin Dashboard</Link>{' '}</a>
                     </li>
                   </ul>
 
