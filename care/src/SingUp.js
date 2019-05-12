@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+import {
+  Link
+} from 'react-router-dom'
 export default class SingUp extends Component {
   render() {
     return (
@@ -50,7 +52,7 @@ export default class SingUp extends Component {
             <Input type="checkbox" name="check" id="exampleCheck" />
             <Label for="exampleCheck" check>Check me out</Label>
           </FormGroup>
-          <Button onClick={this.props.registerHandler}>Sign in</Button>
+          <Link className="thenave" to="/" ><Button onClick={this.props.registerHandler}>Sign in</Button></Link>{' '} 
         </Form>
       </div>
     )
