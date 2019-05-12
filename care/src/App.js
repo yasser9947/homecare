@@ -70,6 +70,7 @@ export default class App extends Component {
         console.log("eroor")
 
       })
+      
   }
 // log out method
   logout = () => {
