@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class SingUp extends Component {
   render() {
     return (
-      <div>
-        <h1> Sing up page</h1>
+      <div style={{ marginLeft: '1rem'}}>
+        <h1> Sing up </h1>
         <form>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -43,13 +43,16 @@ export default class SingUp extends Component {
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck"/>
+      {/* <input class="form-check-input" type="checkbox" id="gridCheck"/>
       <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+        
+      </label> */}
+
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <div style={{textAlign: 'center'}} > 
+  <button type="submit" class="btn btn-primary">Sign in </button>
+  </div>
 </form>
       </div>
     )

@@ -12,6 +12,8 @@ import LogIn from './LogIn'
 import SingUp from './SingUp'
 import ContactUS from './ContactUS'
 import FOQ from './FOQ'
+import Requstes from './Requstes'
+import Terms from './Terms'
 
 
 // 
@@ -130,9 +132,10 @@ console.log(this.state.name);
 
           <nav className="navbar navbar-light navlogo" >
 
-            <img src="http://beyondfaithhomecare.com/wp-content/themes/beyondfaith/images/LifeCareHomeCare_COLOR_logo_BF%20Tag-01.png" className="" height='80' width='170' alt="" />
+            <img src="./HomeCare_logo.png" className="" height='80' width='170' alt="" />
 
             <div className="rightNav">
+
 
 
 
@@ -141,11 +144,11 @@ console.log(this.state.name);
 
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">rigester</Link>{' '}</a></li>
-
-
-                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn">log in</Link>{' '}</li>
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > HomeCare </Link>{' '}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn"> Make an appointment</Link>{' '}</li>
+                  {/* <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">Register</Link>{' '}</a></li> */}
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/Register">Register</Link>{' '}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn">Log-In</Link>{' '}</li>
                 </ol>
               </nav>
             </div>
@@ -155,16 +158,16 @@ console.log(this.state.name);
             <Route exact path="/" component={HomePage} />
             <Route path="/SingUp" component={SingUp} />
             <Route path="/LogIn" render={() => <LogIn changeHandler = {this.changeHandler} />} />
-
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
-
+            <Route path="/Requstes" component={Requstes} />
+            <Route path="/Terms" component={Terms} />
           </div>
 
 
 
           {/* footer */}
-
+<div className="navbar navbar-light navlogo"> 
           <footer className="page-footer font-small blue pt-4">
 
             <div className="container-fluid text-center text-md-left">
@@ -175,6 +178,7 @@ console.log(this.state.name);
 
                   <h5 className="text-uppercase">Footer Content</h5>
                   <p>Here you can use rows and columns to organize your footer content.</p>
+                  <p> © Copyright 2019. All Rights Reserved.  </p>
 
                 </div>
 
@@ -186,17 +190,16 @@ console.log(this.state.name);
 
                   <ul className="list-unstyled">
                     <li>
-                      <a href="#!"><Link  to="/ContactUS">ContactUS</Link>{' '}</a>
+                      <a href="#!"><Link  to="/ContactUS">Contact US</Link>{' '}</a>
                     </li>
                    
-                      <a href="#!"><Link  to="/FOQ">FOQ</Link>{' '}</a>
+                      <a href="#!"><Link  to="/FOQ">FAQ</Link>{' '}</a>
                     <li>
-                      <a href="#!">Link 3</a>
+                      <a href="#!">  <Link  to="/"> Terms and Conditions </Link> {' '} </a>
                     </li>
-                    <li>
-                      <a href="#!">Link 4</a>
-                    </li>
+                    
                   </ul>
+                 
 
                 </div>
 
@@ -209,7 +212,7 @@ console.log(this.state.name);
           
 
           </footer>
-
+          </div>
         </div>
 
       </Router>
