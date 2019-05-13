@@ -8,12 +8,23 @@ export default class FOQ extends Component {
 
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { collapse: false };
+    this.toggle1 = this.toggle1.bind(this);
+    this.toggle2 = this.toggle2.bind(this);
+
+    this.state = { collapse1: false ,
+      collapse2: false,
+      collapse3: false };
   }
 
-  toggle() {
-    this.setState(state => ({ collapse: !state.collapse }));
+  toggle1 =(e) => {
+    let data = {...this.state}
+    data.collapse1 = !data.collapse1
+this.setState(data)
+  }
+  toggle2 =(e) => {
+    let data = {...this.state}
+    data.collapse2 = !data.collapse2
+this.setState(data)
   }
   render() {
 
@@ -22,11 +33,19 @@ export default class FOQ extends Component {
     return (
       <div>
     <div>
-        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>problem1</Button>
-        <Collapse isOpen={this.state.collapse}>
+        <Button color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>problem1</Button>
+        <Collapse isOpen={this.state.collapse2}>
           <Card>
             <CardBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis consequuntur recusandae aspernatur facere natus maxime suscipit dolore possimus repellendus esse. Explicabo, ex. Aut ducimus iusto maiores voluptatem dignissimos mollitia unde!
+              problem1 
+   </CardBody>
+          </Card>
+        </Collapse>
+        <Button color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>problem2</Button>
+        <Collapse isOpen={this.state.collapse1}>
+          <Card>
+            <CardBody>
+problem 2
             </CardBody>
           </Card>
         </Collapse>

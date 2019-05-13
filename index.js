@@ -45,16 +45,16 @@ app.use(passport.session())
 
 
 // //connect to mongoose
-// mongoose.connect('mongodb://localhost/home_care',
-//     { useNewUrlParser: true })
-//     .then(() => { console.log('db connected') },
-//         err => { console.log(err) })
-// //fix database index from deprecated mongoose
-// mongoose.set('useCreateIndex', true)
+mongoose.connect('mongodb://localhost/home_care',
+    //     { useNewUrlParser: true })
+    //     .then(() => { console.log('db connected') },
+    //         err => { console.log(err) })
+    // //fix database index from deprecated mongoose
+    // mongoose.set('useCreateIndex', true)
 
-//connecting to cloud database using mongoDB Atlas 
-mongoose.connect('mongodb+srv://homecare:123456789A!@cluster0-fhzuj.mongodb.net/test?retryWrites=true',
-{ useNewUrlParser: true })
+    //connecting to cloud database using mongoDB Atlas 
+    // mongoose.connect('mongodb+srv://homecare:123456789A!@cluster0-fhzuj.mongodb.net/test?retryWrites=true',
+    { useNewUrlParser: true })
     .then(() => { console.log('db connected') },
         err => { console.log(err) })
 //fix database index from deprecated mongoose

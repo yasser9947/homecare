@@ -16,6 +16,7 @@ console.log(e)
 
   
   render() {
+// const log = (this.state.isAuthenticated) ? <Link className="thenave" to="/" ><Button onClick= {this.props.login} color="primary" size="lg" block> Login </Button></Link> : null
     return (
       <div>
     <>
@@ -28,8 +29,7 @@ console.log(e)
           <Label for="exampleEmail" sm={2}>Password</Label>
           <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
-      <Link className="thenave" to="/" ><Button onClick= {this.props.login} color="primary" size="lg" block> Login </Button></Link>
-     </Col>
+      <Link className="thenave" to="/" >  <Button onClick= {this.props.login} color="primary" size="lg" block> Login </Button>   </Link>  </Col>
     </>
       </div>
     )

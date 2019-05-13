@@ -1,6 +1,9 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import {
+    Link
+  } from 'react-router-dom'
 class ModalExample extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -41,7 +44,7 @@ class ModalExample extends React.Component {
                   No
                 </Button>
                 <Button variant="primary" onClick={this.handleClose}>
-                  Yes
+                <Link className="thenave" to="/" >Yes</Link> 
                 </Button >
               </Modal.Footer>
             </Modal>

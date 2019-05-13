@@ -2,9 +2,9 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth' ;import { Container, Row, Button, Col, Alert } from 'reactstrap';
-import './App.css'; import HomePage from './HomePage' ; import LogIn from './LogIn' ;import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import AdminTool from './admin_tool'; import UserProfile from './UserProfile'
-import {  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'; import { Container, Row, Button, Col, Alert } from 'reactstrap';
+import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
 // 
 let header = {
@@ -22,7 +22,7 @@ export default class App extends Component {
     medicine: [],
     user: "",
     errorMsg: '',
-    isAuthenticated: false,
+    isAuthenticated: true,
     hasError: false,
 
   }
@@ -37,8 +37,9 @@ export default class App extends Component {
     // console.log(this.state);
 
   }
-// log in method
+  // log in method
   loginHandler = (e) => {
+    alert("ok")
     axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
@@ -56,13 +57,13 @@ export default class App extends Component {
       .catch(err => {
         let data = { ...this.state }
         data.hasError = true
-        this.setState( data)
+        this.setState(data)
         console.log("eroor")
 
       })
-      
+
   }
-// log out method
+  // log out method
   logout = () => {
     logout()
     let data = { ...this.state }
@@ -77,12 +78,12 @@ export default class App extends Component {
   // register method
   registerHandler = (e) => {
     console.log()
-    let user = { 
+    let user = {
       email: this.state.email,
-      username : this.state.username, 
-      password: this.state.password, 
-      nationality: this.state.nationality, 
-      user_rule: this.state.user_rule 
+      username: this.state.username,
+      password: this.state.password,
+      nationality: this.state.nationality,
+      user_rule: this.state.user_rule
     }
 
     axios.post('http://localhost:4001/user/auth/register', user)
@@ -93,16 +94,16 @@ export default class App extends Component {
       })
       .catch(err => (console.log("yaa not working" + err)))
   }
-// 
+  // 
 
-  
+
   render() {
-   
-    const showLogin = (!this.state.isAuthenticated) ?<Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
 
-    const Logout = (this.state.isAuthenticated) ?  <Link ><ModalExample logout={this.logout} /></Link>: <Link className="thenave" to="/SingUp">rigester</Link>
+    const showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
 
-  
+    const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp">rigester</Link>
+
+
 
     console.log(this.state)
 
@@ -129,14 +130,14 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
-            <Route path="/UserProfile" render={() => <UserProfile  user={this.state}  />} />
+            <Route path="/UserProfile" render={() => <UserProfile user={this.state} />} />
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
-            <Route path="/LogIn" render={() => <LogIn changeHandler={this.changeHandler} login ={this.loginHandler} />} />
+            <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
             {/* registerHandler */}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
-            <Route path="/AdminTool" component={AdminTool} />
+            <Route path="/Admin" component={Admin} />
           </div>
           {/* footer */}
           <footer className="page-footer font-small blue pt-4">
@@ -161,7 +162,7 @@ export default class App extends Component {
                       <a href="#!">Link 4</a>
                     </li>
                     <li>
-                      <a href="#!"><Link  to="/AdminTool">Admin Dashboard</Link>{' '}</a>
+                      <a href="#!"><Link to="/Admin">Admin Dashboard</Link>{' '}</a>
                     </li>
                   </ul>
                 </div>
