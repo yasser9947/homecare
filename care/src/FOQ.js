@@ -47,6 +47,7 @@ export default class FOQ extends Component {
     let data = { ...this.state }
     data.collapse6 = !data.collapse6
     this.setState(data)
+
   }
 
   render() {
@@ -120,6 +121,7 @@ export default class FOQ extends Component {
             </Card>
           </Collapse>
         </div>
+
 
       </div>
     )
