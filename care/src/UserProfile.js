@@ -3,6 +3,7 @@ import './App.css';
 
 export default class UserProfile extends Component {
   render() {
+    // var name = this.props.user
     return (
       <div class="container ">
         <div class="row">
@@ -11,7 +12,8 @@ export default class UserProfile extends Component {
               <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-8">
                   <h2>
-                    Name
+                    {/* {name} */}
+                    name
                     </h2>
                   <p><strong>About: </strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis architecto necessitatibus natus accusantium culpa, placeat at non fuga facere, impedit velit libero ut molestias. Numquam ipsum est officia ducimus quam. </p>
                   <p><strong>city: </strong> </p>
