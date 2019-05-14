@@ -2,6 +2,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
   BrowserRouter as Router,
   Route,
   Link
+
 } from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'; import { Container, Row, Button, Col, Alert } from 'reactstrap';
 import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -105,13 +106,20 @@ export default class App extends Component {
 
 
 
+
     console.log(this.state)
 
     console.log(this.state);
 
     return (
 
+
+
+{/*                   <LogIn  />
+ */}
+=======
       <Router>
+
 
         <div class="fixApp">
           {/* navbar */}
@@ -120,17 +128,23 @@ export default class App extends Component {
             <div className="rightNav">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
-                  <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > HomeCare </Link>{' '}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn"> Make an appointment</Link>{' '}</li>
+                  {/* <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">Register</Link>{' '}</a></li> */}
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/Register">Register</Link>{' '}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn">Log-In</Link>{' '}</li>
+
                 </ol>
               </nav>
             </div>
           </nav>
           <div class="medle">
             <Route exact path="/" component={HomePage} />
+
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
             <Route path="/UserProfile" render={() => <UserProfile user={this.state} />} />
+            <Route path="/Requstes" component={Requstes} />
+            <Route path="/Terms" component={Terms} />
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
@@ -140,35 +154,44 @@ export default class App extends Component {
             <Route path="/Admin" component={Admin} />
           </div>
           {/* footer */}
+<div className="navbar navbar-light navlogo"> 
+
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">
               <div className="row">
                 <div className="col-md-6 mt-md-0 mt-3">
                   <h5 className="text-uppercase">Footer Content</h5>
                   <p>Here you can use rows and columns to organize your footer content.</p>
+                  <p> © Copyright 2019. All Rights Reserved.  </p>
+
+
                 </div>
                 <hr className="clearfix w-100 d-md-none pb-3" />
                 <div className="col-md-3 mb-md-0 mb-3">
                   <h5 className="text-uppercase">Links</h5>
                   <ul className="list-unstyled">
                     <li>
-                      <a href="#!"><Link to="/ContactUS">ContactUS</Link>{' '}</a>
+                      <a href="#!"><Link  to="/ContactUS">Contact US</Link>{' '}</a>
                     </li>
-                    <a href="#!"><Link to="/FOQ">FOQ</Link>{' '}</a>
+                   
+                      <a href="#!"><Link  to="/FOQ">FAQ</Link>{' '}</a>
+
                     <li>
-                      <a href="#!">Link 3</a>
+                      <a href="#!">  <Link  to="/"> Terms and Conditions </Link> {' '} </a>
                     </li>
-                    <li>
-                      <a href="#!">Link 4</a>
-                    </li>
+                    
+                  </ul>
+                 
+
                     <li>
                       <a href="#!"><Link to="/Admin">Admin Dashboard</Link>{' '}</a>
                     </li>
-                  </ul>
+
                 </div>
               </div>
             </div>
           </footer>
+
         </div>
 
       </Router>

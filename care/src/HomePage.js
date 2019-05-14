@@ -34,6 +34,19 @@ export default class HomePage extends Component {
                   </div>
                 </div>
               </div>
+<br></br>
+              <div style={{textAlign: 'center'}} >
+<section>
+              <h3>  About HomeCare</h3>
+              <br></br>
+              <h5> is an on-demand healthcare app revolutionising the way medical services are provided. 
+Through our innovative and easy to use interface, 
+you are clicks away from gaining access to quality medical care 
+at the convenience of your own home or work. </h5>
+<br></br>
+<br></br>
+</section>
+</div>
               <a class="carousel-control-prev" href="" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>

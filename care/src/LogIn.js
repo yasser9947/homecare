@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link
+
 } from 'react-router-dom'
 
 export default class LogIn extends Component {
@@ -22,6 +23,7 @@ console.log(e)
     <>
     <Col sm={3} md={4} className="mx-auto">
      <FormGroup>
+       <h3> Log-In</h3>
           <Label for="exampleEmail" sm={2}>Email</Label>
         <Input name="email" onChange ={this.props.changeHandler} />
      </FormGroup>
@@ -29,7 +31,12 @@ console.log(e)
           <Label for="exampleEmail" sm={2}>Password</Label>
           <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
-      <Link className="thenave" to="/" >  <Button onClick= {this.props.login} color="primary" size="lg" block> Login </Button>   </Link>  </Col>
+      <Button  color="primary" size="lg" block> Login </Button>
+<br></br>
+      <p> Don't have an account? <Link to="/SingUp">Register</Link>  </p>
+
+     </Col>
+
     </>
       </div>
     )
