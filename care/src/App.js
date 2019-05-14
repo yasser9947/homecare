@@ -137,9 +137,8 @@ export default class App extends Component {
             {/* registerHandler user*/}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
-            <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  {...props}/>} />
+            <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
 
-            <Route path="/Admin" component={Admin} />
           </div>
           {/* footer */}
           <footer className="page-footer font-small blue pt-4">

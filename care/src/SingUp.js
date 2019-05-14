@@ -6,6 +6,7 @@ import {
 export default class SingUp extends Component {
   render() {
     return (
+
       <div>
         <h1> Sing up page</h1>
         <Form>
