@@ -8,7 +8,8 @@ const appointmentSchema = new Schema({
  reservation_reason:{type:String},
  cancellation_reason:{type:String},
  medicines:{ type: Schema.Types.ObjectId, ref : 'Medicine'},
- status:{type: Number}
+ status:{type: Number},
+ canceled:{type: Boolean},
 },{timestamps : true})
 
 

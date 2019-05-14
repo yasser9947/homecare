@@ -117,7 +117,7 @@ export default class App extends Component {
 
 {/*                   <LogIn  />
  */}
-=======
+//=======
       <Router>
 
 
@@ -196,10 +196,9 @@ export default class App extends Component {
 
       </Router>
 
-      // footer 
 
 
 
-    )
+    );
   }
 }
