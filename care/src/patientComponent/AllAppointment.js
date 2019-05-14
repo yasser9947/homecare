@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const appointment = props => (
+const Appointment = props => (
     <tr>
-        <td className={props.canceled ? 'canceled' : ''}>{props.date}</td>
-        <td className={props.canceled ? 'canceled' : ''}>{props.reservation_reason}</td>
-        <td className={props.canceled ? 'canceled' : ''}>{props.cancellation_reason}</td>
+        <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.date}</td>
+        <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.reservation_reason}</td>
+        <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.cancellation_reason}</td>
         <td>
             <Link to={"/edit/"+props.appointment._id}>Edit</Link>
         </td>
@@ -19,12 +19,40 @@ export default class AllAppointment extends Component {
         super(props);
         this.state = {appointments: []};
     }
+    componentDidMount() {
+        axios.get('http://localhost:4001/user/auth/appointment/')
+            .then(response => {
+                this.setState({ appointments: response.data });
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
 
+    appointmentList() {
+        return this.state.appointments.map(function(currentAppointment, i){
+            return <Appointment appointment={currentAppointment} key={i} />;
+        })
+    }
     
+
+
   render() {
     return (
       <div>
-        
+        <h3>Appointment List</h3>
+                <table className="table table-striped" style={{ marginTop: 20 }} >
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Reservation Reason</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { this.appointmentList() }
+                    </tbody>
+                </table>
       </div>
     )
   }
