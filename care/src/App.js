@@ -134,9 +134,11 @@ export default class App extends Component {
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
-            {/* registerHandler */}
+            {/* registerHandler user*/}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
+            <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  {...props}/>} />
+
             <Route path="/Admin" component={Admin} />
           </div>
           {/* footer */}
