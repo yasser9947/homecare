@@ -30,6 +30,17 @@ export default class AllAppointment extends Component {
             })
     }
 
+
+    componentDidUpdate(){
+        axios.get('http://localhost:4001/user/auth/appointment/patient/')
+        .then(response => {
+            this.setState({ appointments: response.data });
+        })
+        .catch(function (error){
+            console.log(error);
+        })
+    }
+
     appointmentList() {
         return this.state.appointments.map(function(currentAppointment, i){
             return <Appointment appointment={currentAppointment} key={i} />;
