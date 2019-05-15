@@ -52,6 +52,8 @@ export default class App extends Component {
           this.setState(data)
           this.getGames()
           console.log(response)
+          console.log(data.user)
+
         }
       })
       .catch(err => {

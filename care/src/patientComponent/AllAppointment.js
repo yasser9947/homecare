@@ -7,7 +7,7 @@ const Appointment = props => (
     <tr>
         <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.date}</td>
         <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.reservation_reason}</td>
-        <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.cancellation_reason}</td>
+        {/* <td className={props.appointment.canceled ? 'canceled' : ''}>{props.appointment.cancellation_reason}</td> */}
         <td>
             <Link to={"/edit/"+props.appointment._id}>Edit</Link>
         </td>
@@ -29,7 +29,6 @@ export default class AllAppointment extends Component {
                 console.log(error);
             })
     }
-
 
     componentDidUpdate(){
         axios.get('http://localhost:4001/user/auth/appointment/patient/')
@@ -56,7 +55,7 @@ export default class AllAppointment extends Component {
                         <tr>
                             <th>Date</th>
                             <th>Reservation Reason</th>
-                            <th>Cancellation Reason</th>
+                            {/* <th>Cancellation Reason</th> */}
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -18,8 +18,6 @@ export default class EdiAppointment extends Component {
             cancellation_reason: '',
             canceled: false
         }
-
-
     }
 
     componentDidMount() {
@@ -55,8 +53,6 @@ export default class EdiAppointment extends Component {
         });
     }
 
-
-    
     onChangeAppointmentCanceled (e) {
         this.setState({
             canceled: !this.state.canceled
@@ -112,33 +108,6 @@ export default class EdiAppointment extends Component {
                                 />
                     </div>
                     
-                    
-                    
-                    
-                    <div className="form-group">
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityLow" 
-                                    value="Low"
-                                    checked={this.state.todo_priority==='Low'} 
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Low</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input  className="form-check-input" 
-                                    type="radio" 
-                                    name="priorityOptions" 
-                                    id="priorityMedium" 
-                                    value="Medium" 
-                                    checked={this.state.todo_priority==='Medium'} 
-                                    onChange={this.onChangeTodoPriority}
-                                    />
-                            <label className="form-check-label">Medium</label>
-                        </div>
-                    </div>
                     <div className="form-check">
                         <input  className="form-check-input"
                                 id="completedCheckbox"

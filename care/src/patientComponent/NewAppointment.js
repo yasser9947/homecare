@@ -11,6 +11,7 @@ export default class NewAppointment extends Component {
 
         this.state = {
             date: '',
+            patient_id:'',
             reservation_reason: '',
             canceled: false
         }
@@ -37,13 +38,15 @@ export default class NewAppointment extends Component {
 
         const obj = {
             date: this.state.date,
+            patient_id:'',
             reservation_reason: this.state.reservation_reason,
         };
-
+        console.log(`Patient_id: ${this.state.patient_id}`);
+        
         this.setState({
             date: '',
             reservation_reason: '',
-            // cancellation_reason: '',
+            patient_id:'',
             canceled: false
         })
         axios.post('http://localhost:4001/user/auth/appointment/', obj)
@@ -75,7 +78,6 @@ export default class NewAppointment extends Component {
                         />
             </div>
             
-
             <div className="form-group">
                 <input type="submit" value="Request New Appointment" className="btn btn-primary" />
             </div>
