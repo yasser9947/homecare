@@ -21,7 +21,9 @@ export default class EdiAppointment extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id)
+        // axios.get('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id)
+         axios.get('http://localhost:4001/appointment/'+this.props.match.params.id)
+
             .then(response => {
                 this.setState({
                     date: response.data.date,
@@ -68,8 +70,9 @@ export default class EdiAppointment extends Component {
             canceled: this.state.canceled
         };
         console.log(obj);
-        axios.post('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
+        // axios.post('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id, obj)
+         axios.put('http://localhost:4001/appointment/'+this.props.match.params.id, obj)
+        .then(res => console.log(res.data));
         
         this.props.history.push('/user/auth/');//return to user profile
     }

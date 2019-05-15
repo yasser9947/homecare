@@ -74,7 +74,18 @@ return <Appointment appointment={appt} key={index} />
     return (
       <div>
         <h3>Appointment List</h3>
-                       {appts}
+        {/* <table>
+            <thead>
+        <th>Date</th>
+    <th>Reason</th> 
+    <th>Action</th> 
+    </thead>
+    <tbody>
+  </tbody>
+        </table> */}
+        {appts}
+
+                    
                     
                
       </div>
