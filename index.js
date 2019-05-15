@@ -9,7 +9,7 @@ const user_routes = require('./routes/user_routes')
 const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
-
+const Appointment=require('./models/appointment')
 
 
 //models
@@ -74,6 +74,43 @@ app.get('/', (req, res) => {
     console.log("server is running")
     res.send("server is running")
 })
+
+app.get('/appointment/patient/:id', (req, res) => {
+    console.log(req.params.id)
+    Appointment.find({ patient_id: req.params.id })
+    .then(appointment =>{
+      res.status(200).json({ appointment : appointment })
+      return false
+    })
+    .catch(err => {
+      res.json({ message: err })
+      return false
+    })
+  })
+
+  app.post('/appointment', (req, res)=>{
+
+    let data = {
+        date : req.body.date,
+        doctor_id:req.body.doctor_id,
+        patient_id:req.body.patient_id,
+        reservation_reason: req.body.reservation_reason,
+        medicines:null,
+        status:0
+      }
+    
+      let appointment = new Appointment(data)
+    
+      appointment.save()
+      .then(()=> {
+       
+       res.status(200).json({ appointment : appointment, message: "saved"})
+      })
+      .catch(err => {
+       res.send({ message : err})
+      })
+    })
+
 
 app.use('*', (req, res) => {
     res.status(201).json({ message: "Data not found!" })
