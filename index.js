@@ -110,7 +110,17 @@ app.get('/appointment/patient/:id', (req, res) => {
        res.send({ message : err})
       })
     })
-
+    app.put('/appointment/:id', (req, res)=>{
+        let update = req.body
+        console.log(req.params.id)
+        Appointment.findByIdAndUpdate(req.params.id, update)
+        .then(() =>{
+            res.json({message: "update done"});
+        })
+        .catch(err => {
+            res.json({message: "there is a problem", err : err})
+        })
+      })
 
 app.use('*', (req, res) => {
     res.status(201).json({ message: "Data not found!" })

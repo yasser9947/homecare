@@ -11,7 +11,28 @@ export default class Appointment extends Component {
   render() {
     return (
       <div>
-        <table>
+        {/* <table>
+<tbody>
+<tr>
+  <td>  {this.props.appointment.date}</td>
+  <td>  {this.props.appointment.reservation_reason}</td>
+
+  <td> <Link to={"/edit/"+this.props.appointment._id}>Edit</Link></td>
+</tr>
+</tbody>
+
+        </table> */}
+        <pre> 
+     Date: {this.props.appointment.date}
+     </pre> 
+     <pre> 
+     Reservation_reason: {this.props.appointment.reservation_reason}
+    </pre> 
+    <pre> 
+            <Link to={"/edit/"+this.props.appointment._id}>Edit</Link>
+            </pre>   
+      <hr/>
+        {/* <table>
         <tbody>
   <tr>
     <th>Date</th>
@@ -26,7 +47,7 @@ export default class Appointment extends Component {
         </td>
   </tr>
   </tbody>
-        </table>
+        </table> */}
       </div>
     )
   }
