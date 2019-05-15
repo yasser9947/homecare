@@ -20,23 +20,23 @@ export default class Admin extends Component {
     }
     render() {
 
-        var view = "this.state.name"
-        switch (this.state.name) {
-            case "1":
-                view = <Createdoctor />
-                break;
-            case "2":
-                view = <UpdateDoctor />
-                break;
-            case "3":
-                view = <ToolApoimont />
-                break;
-            case "5":
-                view = <AllPaition />
-                break;
-            default:
-            // code block
-        }
+        // var view = "this.state.name"
+        // switch (this.state.name) {
+        //     case "1":
+        //         view = <Createdoctor />
+        //         break;
+        //     case "2":
+        //         view = <UpdateDoctor />
+        //         break;
+        //     case "3":
+        //         view = <ToolApoimont />
+        //         break;
+        //     case "5":
+        //         view = <AllPaition />
+        //         break;
+        //     default:
+        //     // code block
+        // }
         return (
             <div>
                 <div class="contenerpord">
@@ -54,8 +54,9 @@ export default class Admin extends Component {
                     </div>
 
                     <div class="rihgt">
-                        {view} 
-                    </div>
+                    <AllPaition />
+
+                                        </div>
 
                 </div>
             </div>

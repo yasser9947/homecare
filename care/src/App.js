@@ -111,6 +111,7 @@ export default class App extends Component {
 
     return (
 
+
       <Router>
 
         <div class="fixApp">
@@ -174,10 +175,9 @@ export default class App extends Component {
 
       </Router>
 
-      // footer 
 
 
 
-    )
+    );
   }
 }
