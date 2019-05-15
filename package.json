@@ -7,7 +7,8 @@
     "test": "nodemon index",
     "start": "node index.js",
     "care": "cd care && npm start",
-    "dev": "concurrently \" npm test\" \"npm run care\""
+    "dev": "concurrently \" npm test\" \"npm run care\"",
+    "jwt-decode": "*"
   },
   "repository": {
     "type": "git",

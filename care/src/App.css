@@ -102,3 +102,19 @@ span.tags
 margin-left: 0px auto !important;
 
 }
+
+.slideshow {
+    opacity: 0.5;
+    filter: alpha(opacity=50); 
+    height: 90%;
+     width: 90%;
+     text-align:center;
+  }
+.center-img{
+    text-align:center;
+    
+
+}
+.creetdoctor{
+    margin: 40px;
+}

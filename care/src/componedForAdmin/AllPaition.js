@@ -4,28 +4,61 @@ import {
   Link
 } from 'react-router-dom'
 import axios from 'axios'
+import { Table } from 'reactstrap';
+
 export default class AllPaition extends Component {
     state = {
-
+users : []
         
     }
 
 showAll = () =>{
-    axios.get('http://localhost:4001/user/all')
-    .then(response => {
-      console.log(response)
-      console.log("masseg")
+ 
+}
+componentDidMount(){
+  axios.get('http://localhost:4001/usershow/all')
+  .then(res => {
+let deta = {...this.state} 
+deta.users = res.data.users
+this.setState(deta)
 
-    })
-    .catch(err => (console.log( + err)))
+    console.log("masseg")
+
+  })
+  .catch(err => (console.log( + err)))
 }
 
   render() {
-    this.showAll()
+    console.log(this.state.users)
+    var Data = this.state.users.map((ele, i) => {
+
+      return <tr>
+      <th scope="row">{i+1}</th>
+      <td>{ele.username}</td>
+      <td>{ele.nationality}</td> 
+      <td>{ele.email}</td>
+      <td>{ele.createdAt}</td>
+     
+    </tr>
+  })
     return (
       <div>
-        AllPaition Component
-      </div>
+ <Table striped>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th> Name</th>
+            <th> nationality</th>
+            <th>email</th>
+            <th>createdAt</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+          {Data}
+        </tbody>
+      </Table>
+            </div>
     )
   }
 }

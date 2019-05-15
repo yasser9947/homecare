@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Input, Col, FormGroup, Label, Button} from '../node_modules/reactstrap'
 import {
-  BrowserRouter as Router,
-  Route,
+  // BrowserRouter as Router,
+  // Route,
   Link
 
 } from 'react-router-dom'
@@ -23,7 +23,7 @@ console.log(e)
     <>
     <Col sm={3} md={4} className="mx-auto">
      <FormGroup>
-       <h3> Log-In</h3>
+       <h3> Log-In </h3>
           <Label for="exampleEmail" sm={2}>Email</Label>
         <Input name="email" onChange ={this.props.changeHandler} />
      </FormGroup>
@@ -31,7 +31,9 @@ console.log(e)
           <Label for="exampleEmail" sm={2}>Password</Label>
           <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
-      <Button onClick ={this.props.login} color="primary" size="lg" block> Login </Button>
+
+      <Button  onClick = {this.props.login}color="primary" size="lg" block> Login </Button>
+
 <br></br>
       <p> Don't have an account? <Link to="/SingUp">Register</Link>  </p>
 

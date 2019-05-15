@@ -9,7 +9,8 @@ const user_routes = require('./routes/user_routes')
 const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
-
+const Appointment=require('./models/appointment')
+const usershow_routes = require('./routes/usershow_routes')
 
 
 //models
@@ -68,12 +69,60 @@ app.use('/user/', passport.authenticate('jwt', { session: false }), require('./r
 
 
 app.use('/user', user_routes)
+app.use('/usershow', usershow_routes)
 
 //cannot find route
 app.get('/', (req, res) => {
     console.log("server is running")
     res.send("server is running")
 })
+
+app.get('/appointment/patient/:id', (req, res) => {
+    console.log(req.params.id)
+    Appointment.find({ patient_id: req.params.id })
+    .then(appointment =>{
+      res.status(200).json({ appointment : appointment })
+      return false
+    })
+    .catch(err => {
+      res.json({ message: err })
+      return false
+    })
+  })
+
+  app.post('/appointment', (req, res)=>{
+
+    let data = {
+        date : req.body.date,
+        doctor_id:req.body.doctor_id,
+        patient_id:req.body.patient_id,
+        reservation_reason: req.body.reservation_reason,
+        medicines:null,
+        status:0
+      }
+    
+      let appointment = new Appointment(data)
+    
+      appointment.save()
+      .then(()=> {
+       
+       res.status(200).json({ appointment : appointment, message: "saved"})
+      })
+      .catch(err => {
+       res.send({ message : err})
+      })
+    })
+    app.put('/appointment/:id', (req, res)=>{
+        let update = req.body
+        console.log(req.params.id)
+        Appointment.findByIdAndUpdate(req.params.id, update)
+        .then(() =>{
+            res.json({message: "update done"});
+        })
+        .catch(err => {
+            res.json({message: "there is a problem", err : err})
+        })
+      })
 
 app.use('*', (req, res) => {
     res.status(201).json({ message: "Data not found!" })

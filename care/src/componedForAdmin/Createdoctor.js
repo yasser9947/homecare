@@ -41,7 +41,7 @@ export default class Createdoctor extends Component {
     return (
       <div>
  <h1> Create doctor</h1>
-        <Form>
+        <Form className = "creetdoctor">
           <Row form>
             <Col md={6}>
               <FormGroup>
