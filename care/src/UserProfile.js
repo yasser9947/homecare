@@ -43,27 +43,27 @@ export default class UserProfile extends Component {
               <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong>  </strong></h2>
-                  <p><h5>requst a appointment</h5></p>
-                  <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> requst </button>
+                  <p><h5>Request a appointment</h5></p>
+                 <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> <Link to="/create"> Request </Link> </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong></strong></h2>
                   <p><h5>update </h5></p>
                   <br/>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span> click to update </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/edit/:id"> Update </Link> </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong></strong></h2>
                   <p><h5>view the appointment </h5></p>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span> click to seel </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/"> View All Appointment </Link> </button>
                 </div>
 
               </div>
             </div>
           </div>
-          <Link to="/" className="nav-link">All Appointments</Link>
+          {/* <Link to="/" className="nav-link">All Appointments</Link>
           <Link to="/edit/:id" className="nav-link">Edit Appointment</Link>
-          <Link to="/create" className="nav-link">New Appointment</Link>
+          <Link to="/create" className="nav-link">New Appointment</Link> */}
 
         </div>
         <br/>

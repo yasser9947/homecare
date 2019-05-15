@@ -47,16 +47,18 @@ export default class NewAppointment extends Component {
         };
         console.log(`Patient_id: ${user}`);
 
-        this.setState({
-            date: '',
-            reservation_reason: '',
-            patient_id:'',
-            canceled: false
-        })
-        axios.post('http://localhost:4001/user/auth/appointment/', obj)
+        // this.setState({
+        //     date: '',
+        //     reservation_reason: '',
+        //     patient_id:'',
+        //     canceled: false
+        // })
+        axios.post('http://localhost:4001/appointment/', obj)
+       // axios.post('http://localhost:4001/user/auth/appointment/', obj)
             .then(res => console.log(res.data));
         
-        this.props.history.push('/user/auth/');//return to user profile
+        // this.props.history.push('/user/auth/');//return to user profile
+        this.props.history.push('/')
     }
 
   render() {
@@ -66,7 +68,7 @@ export default class NewAppointment extends Component {
         <form onSubmit={this.onSubmit}>
             <div className="form-group"> 
                 <label>Date: </label>
-                <input  type="date"
+                <input  type="Date"
                         className="form-control"
                         value={this.state.date}
                         onChange={this.onChangeDate}
@@ -83,7 +85,7 @@ export default class NewAppointment extends Component {
             </div>
             
             <div className="form-group">
-                <input type="submit" value="Request New Appointment" className="btn btn-primary" />
+                <input onClick={this.onSubmit} type="submit" value="Request New Appointment" className="btn btn-primary" />
             </div>
         </form>
     </div>
