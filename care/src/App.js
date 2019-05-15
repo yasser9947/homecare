@@ -145,9 +145,9 @@ console.log(this.state.name);
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > HomeCare </Link>{' '}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn"> Make an appointment</Link>{' '}</li>
-                  {/* <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">Register</Link>{' '}</a></li> */}
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/Register">Register</Link>{' '}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/Requstes"> Make an appointment</Link>{' '}</li>
+                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/SingUp">Register</Link>{' '}</a></li>
+                  {/* <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/Register">Register</Link>{' '}</a></li> */}
                   <li class="breadcrumb-item active" aria-current="page"> <Link className="thenave" to="/logIn">Log-In</Link>{' '}</li>
                 </ol>
               </nav>
