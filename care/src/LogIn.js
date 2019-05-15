@@ -32,6 +32,7 @@ console.log(e)
           <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
       <Button  onClick = {this.props.login}color="primary" size="lg" block> Login </Button>
+
 <br></br>
       <p> Don't have an account? <Link to="/SingUp">Register</Link>  </p>
 
