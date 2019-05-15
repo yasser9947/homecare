@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../css/patient.css'
+import jwt_decode from 'jwt-decode'
+import { getToken } from '../services/auth';
+
 
 const Appointment = props => (
     <tr>
@@ -18,10 +21,15 @@ export default class AllAppointment extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {appointments: []};
+        this.state = {
+            appointments: []
+        };
     }
     componentDidMount() {
-        axios.get('http://localhost:4001/user/auth/appointment/patient/')
+        
+        const user = jwt_decode(getToken())._id 
+
+        axios.get('http://localhost:4001/user/auth/appointment/patient/'+user)
             .then(response => {
                 this.setState({ appointments: response.data });
             })
@@ -31,7 +39,8 @@ export default class AllAppointment extends Component {
     }
 
     componentDidUpdate(){
-        axios.get('http://localhost:4001/user/auth/appointment/patient/')
+        const user = jwt_decode(getToken())._id 
+        axios.get('http://localhost:4001/user/auth/appointment/patient/'+user)
         .then(response => {
             this.setState({ appointments: response.data });
         })

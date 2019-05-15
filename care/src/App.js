@@ -50,10 +50,9 @@ export default class App extends Component {
           data.isAuthenticated = true
           data.hasError = false
           this.setState(data)
-          this.getGames()
+          // this.getGames()
           console.log(response)
-          console.log(data.user)
-
+          window.location=`/UserProfile/${response.data.user._id}`
         }
       })
       .catch(err => {
@@ -88,7 +87,7 @@ export default class App extends Component {
       user_rule: this.state.user_rule
     }
 
-    axios.post('http://localhost:4001/user/auth/register', user)
+    axios.post('http://localhost:4001/user/auth/register',user)
       .then(response => {
         console.log(response)
         console.log("masseg")
@@ -113,6 +112,7 @@ export default class App extends Component {
 
     return (
 
+
       <Router>
 
         <div class="fixApp">
@@ -132,7 +132,7 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
-            <Route path="/UserProfile" render={() => <UserProfile user={this.state} />} />
+            <Route path="/UserProfile/:id" render={() => <UserProfile user={this.state} />} />
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
@@ -176,10 +176,9 @@ export default class App extends Component {
 
       </Router>
 
-      // footer 
 
 
 
-    )
+    );
   }
 }

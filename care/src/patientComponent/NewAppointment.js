@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import jwt_decode from 'jwt-decode'
+import { getToken } from '../services/auth';
+
 export default class NewAppointment extends Component {
 
     constructor(props) {
@@ -35,14 +38,15 @@ export default class NewAppointment extends Component {
         console.log(`Form submitted:`);
         console.log(`Date: ${this.state.date}`);
         console.log(`Reservation Reason: ${this.state.reservation_reason}`);
-
+        const user = jwt_decode(getToken())._id
+        console.log(user)
         const obj = {
             date: this.state.date,
-            patient_id:'',
+            patient_id: user,
             reservation_reason: this.state.reservation_reason,
         };
-        console.log(`Patient_id: ${this.state.patient_id}`);
-        
+        console.log(`Patient_id: ${user}`);
+
         this.setState({
             date: '',
             reservation_reason: '',
