@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from 'axios';
 export default class NewAppointment extends Component {
 
     constructor(props) {
@@ -34,13 +34,22 @@ export default class NewAppointment extends Component {
         console.log(`Form submitted:`);
         console.log(`Date: ${this.state.date}`);
         console.log(`Reservation Reason: ${this.state.reservation_reason}`);
-        
+
+        const obj = {
+            date: this.state.date,
+            reservation_reason: this.state.reservation_reason,
+        };
+
         this.setState({
             date: '',
             reservation_reason: '',
             // cancellation_reason: '',
             canceled: false
         })
+        axios.post('http://localhost:4001/user/auth/appointment/', obj)
+            .then(res => console.log(res.data));
+        
+        this.props.history.push('/user/auth/');//return to user profile
     }
 
   render() {
