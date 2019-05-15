@@ -3,7 +3,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
   Route,
   Link
 } from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'; import { Container, Row, Button, Col, Alert } from 'reactstrap';
-import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'
+import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'; import Requstes from './Requstes'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
 import Editprofile from './Editprofile'
@@ -88,7 +88,7 @@ export default class App extends Component {
       user_rule: this.state.user_rule
     }
 
-    axios.post('http://localhost:4001/user/auth/register', user)
+    axios.post('http://localhost:4001/user/auth/register',user)
       .then(response => {
         console.log(response)
         console.log("masseg")
@@ -127,24 +127,37 @@ export default class App extends Component {
                   <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
+                
               </nav>
+
             </div>
+           
           </nav>
+          <br></br>
+          
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
             <Route path="/UserProfile/:id" render={(props) => <UserProfile user={this.state} {...props}/>} />
+
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
             {/* registerHandler user*/}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
+            <Route path="/Requstes" component={Requstes} />
             <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
             <Route path="/editprofile/:id" component={Editprofile} />
 
 {/* Editprofile */}
           </div>
+          
+
+
+
+
+
           {/* footer */}
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">

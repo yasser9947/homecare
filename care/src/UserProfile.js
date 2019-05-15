@@ -7,6 +7,11 @@ import {
 } from 'react-router-dom'; 
 import Editprofile from './Editprofile'
 
+
+import AllAppointment from './patientComponent/AllAppointment';
+import EdiAppointment from './patientComponent/EdiAppointment';
+import NewAppointment from './patientComponent/NewAppointment';
+
 export default class UserProfile extends Component {
   render() {
     // var name = this.props.user
@@ -16,8 +21,6 @@ export default class UserProfile extends Component {
     return (
       <Router>
 
-
-      
       <div class="container ">
         <div class="row">
           <div className="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 theprofile ">
@@ -34,19 +37,20 @@ export default class UserProfile extends Component {
               <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong>  </strong></h2>
-                  <p><h5>requst a appointment</h5></p>
-                  <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> requst </button>
+
+                  <p><h5>Request a appointment</h5></p>
+                 <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> <Link to="/create"> Request </Link> </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong></strong></h2>
                   <p><h5>update </h5></p>
                   <br/>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span> click to update </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/edit/:id"> Update </Link> </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong></strong></h2>
                   <p><h5>view the appointment </h5></p>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span> click to seel </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/"> View All Appointment </Link> </button>
                 </div>
                 <h2><strong></strong></h2>
                 <div class="col-xs-12 col-sm-4 emphasis">
@@ -68,8 +72,17 @@ export default class UserProfile extends Component {
 
             </div>
           </div>
+          {/* <Link to="/" className="nav-link">All Appointments</Link>
+          <Link to="/edit/:id" className="nav-link">Edit Appointment</Link>
+          <Link to="/create" className="nav-link">New Appointment</Link> */}
+
         </div>
+        <br/>
+          <Route path="/" exact component={AllAppointment} />
+          <Route path="/edit/:id" component={EdiAppointment} />
+          <Route path="/create" component={NewAppointment} />
       </div>
+
       </Router>
     )
   }

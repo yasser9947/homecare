@@ -1,0 +1,18 @@
+.canceled {
+    text-decoration: line-through;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+  }
+  th {
+    text-align: left;
+  }
+  table {
+    border-spacing: 5px;
+    width: 100%
+  }
