@@ -1,10 +1,23 @@
 import React, { Component } from 'react'
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'; 
+import Editprofile from './Editprofile'
 
 export default class UserProfile extends Component {
   render() {
     // var name = this.props.user
+    console.log(this.props.match.params.id)
+    console.log(this.props.match.params);
+    
     return (
+      <Router>
+
+
+      
       <div class="container ">
         <div class="row">
           <div className="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 theprofile ">
@@ -15,20 +28,7 @@ export default class UserProfile extends Component {
                     {/* {name} */}
                     name
                     </h2>
-                  <p><strong>About: </strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis architecto necessitatibus natus accusantium culpa, placeat at non fuga facere, impedit velit libero ut molestias. Numquam ipsum est officia ducimus quam. </p>
-                  <p><strong>city: </strong> </p>
-                  <p><strong>status: </strong>
-                    <span class="tags">1</span>
-                    <span class="tags">2</span>
-                    <span class="tags">3</span>
-                    <span class="tags">4</span>
-                  </p>
-                </div>
-                <div class="col-xs-12 col-sm-4 text-center">
-                  <figure>
-                    <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive" />
-
-                  </figure>
+                  
                 </div>
               </div>
               <div class="col-xs-12 divider text-center">
@@ -48,12 +48,29 @@ export default class UserProfile extends Component {
                   <p><h5>view the appointment </h5></p>
                   <button class="btn btn-info btn-block"><span class="fa fa-user"></span> click to seel </button>
                 </div>
+                <h2><strong></strong></h2>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                  <h2><strong></strong></h2>
+                  <p><h5>Edit Profile</h5></p>
+                  <br/>
+                  {/* <button class="btn btn-info btn-block">*/}
+                  <a href={`/editprofile/${this.props.match.params.id}`} className=" btn btn-info btn-block nav-link">
+                  <span class="fa fa-user">  
+                    Click to Edit
+                  </span> 
+                  </a>
+                  {/* </button> */}
+                </div>
+
+                
 
               </div>
+
             </div>
           </div>
         </div>
       </div>
+      </Router>
     )
   }
 }

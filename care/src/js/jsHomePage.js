@@ -16,7 +16,8 @@ class ModalExample extends React.Component {
         };
       }
     
-      handleClose() {
+      handleClose(e) {
+        e.preventDefault()
         this.setState({ show: false });
         this.props.logout()
       }
@@ -31,7 +32,7 @@ class ModalExample extends React.Component {
       render() {
         return (
           <>
-            <a variant="primary" onClick={this.handleShow}>
+            <a variant="primary" href="/" onClick={this.handleShow}>
              Long out
             </a>
     

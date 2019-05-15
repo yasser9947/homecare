@@ -6,6 +6,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
 import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
+import Editprofile from './Editprofile'
 // 
 let header = {
   headers: {
@@ -50,8 +51,9 @@ export default class App extends Component {
           data.isAuthenticated = true
           data.hasError = false
           this.setState(data)
-          this.getGames()
+          // this.getGames()
           console.log(response)
+          window.location=`/UserProfile/${response.data.user._id}`
         }
       })
       .catch(err => {
@@ -111,6 +113,7 @@ export default class App extends Component {
 
     return (
 
+
       <Router>
 
         <div class="fixApp">
@@ -130,7 +133,7 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
-            <Route path="/UserProfile" render={() => <UserProfile user={this.state} />} />
+            <Route path="/UserProfile/:id" render={(props) => <UserProfile user={this.state} {...props}/>} />
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
@@ -138,7 +141,9 @@ export default class App extends Component {
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
             <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
+            <Route path="/editprofile/:id" component={Editprofile} />
 
+{/* Editprofile */}
           </div>
           {/* footer */}
           <footer className="page-footer font-small blue pt-4">
@@ -174,10 +179,9 @@ export default class App extends Component {
 
       </Router>
 
-      // footer 
 
 
 
-    )
+    );
   }
 }
