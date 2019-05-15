@@ -10,7 +10,7 @@ const User=require('../models/user')
 // router.use(express.json())
 
 router.get('/all', (req, res)=>{
-    User.find()
+    User.find(({user_rule : 1}))
     .then((users) =>{
       console.log(users)
         res.json({users})
@@ -18,5 +18,13 @@ router.get('/all', (req, res)=>{
     .catch(err => {   
     })
   })
-
+  router.get('/alD', (req, res)=>{
+    User.find(({user_rule : 2}))
+    .then((users) =>{
+      console.log(users)
+        res.json({users})
+    })
+    .catch(err => {   
+    })
+  })
   module.exports = router

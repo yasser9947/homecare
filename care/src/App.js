@@ -36,6 +36,8 @@ export default class App extends Component {
     errorMsg: '',
     isAuthenticated: false,
     hasError: false,
+    user_id : 0 ,
+    UserProfile:`/UserProfile/${this.user_id}`
 
   }
   // get the json file axios 
@@ -63,6 +65,7 @@ export default class App extends Component {
           data.hasError = false
           this.setState(data)
           // this.getGames()
+          console.log(response.data.user._id)
           console.log(response)
           window.location = `/UserProfile/${response.data.user._id}`
         }
@@ -84,6 +87,7 @@ export default class App extends Component {
     data.user = ""
     data.email = ""
     data.password = ""
+    
     data.games = []
 
     this.setState(data)
@@ -114,22 +118,23 @@ export default class App extends Component {
       let data = { ...this.state }
       data.user = decoded
       data.isAuthenticated = true
+      
       this.setState(data)
       console.log("ok token here")
     }
   }
 
   render() {
+// var id = `/UserProfile/${this.state.user_id}`
+console.log( "id  " + this.state.user_id);
 
-    const showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
+    var showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to={this.state.UserProfile}> UserProfile</Link>
 
     const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp">rigester</Link>
 
 
 
-    console.log(this.state)
-
-    console.log(this.state);
+   
 
     return (
 

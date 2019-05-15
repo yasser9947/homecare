@@ -77,6 +77,7 @@ app.get('/', (req, res) => {
     res.send("server is running")
 })
 
+//display all appointments belong to one patient
 app.get('/appointment/patient/:id', (req, res) => {
     console.log(req.params.id)
     Appointment.find({ patient_id: req.params.id })
@@ -90,6 +91,7 @@ app.get('/appointment/patient/:id', (req, res) => {
     })
   })
 
+  //create appointment
   app.post('/appointment', (req, res)=>{
 
     let data = {
@@ -112,6 +114,18 @@ app.get('/appointment/patient/:id', (req, res) => {
        res.send({ message : err})
       })
     })
+
+    //show one appointment
+app.get('/appointment/:id', (req, res)=>{
+  Appointment.findById(req.params.id)
+  .then((appointment) =>{
+      res.json({appointment})
+  })
+  .catch(err => { 
+    res.json({message : err}) 
+  })
+})
+    //update one appointment
     app.put('/appointment/:id', (req, res)=>{
         let update = req.body
         console.log(req.params.id)
