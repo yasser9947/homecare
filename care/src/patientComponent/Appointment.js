@@ -8,7 +8,18 @@ export default class Appointment extends Component {
         appointment: []
     };
 }
+
   render() {
+    var titel="" ;
+    var reason="";
+    if (this.props.appointment.canceled){
+titel="Cancellation Reason: ";
+reason=this.props.appointment.cancellation_reason;
+    }
+    else{
+      titel="Reservation_reason: ";
+      reason=this.props.appointment.reservation_reason;
+    }
     return (
       <div>
         {/* <table>
@@ -23,10 +34,11 @@ export default class Appointment extends Component {
 
         </table> */}
         <pre> 
-     Date: {this.props.appointment.date}
+     <p className={this.props.appointment.canceled ? 'canceled' : ''}>Date: {this.props.appointment.date}</p> 
      </pre> 
+    
      <pre> 
-     Reservation_reason: {this.props.appointment.reservation_reason}
+     <p>{titel}{reason}</p> 
     </pre> 
     <pre> 
             <Link to={"/edit/"+this.props.appointment._id}>Edit</Link>

@@ -1,5 +1,6 @@
 .canceled {
     text-decoration: line-through;
+    color: brown;
   }
 
   table, th, td {
