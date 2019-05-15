@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'; 
+import AllAppointment from './patientComponent/AllAppointment';
+import EdiAppointment from './patientComponent/EdiAppointment';
+import NewAppointment from './patientComponent/NewAppointment';
 
 export default class UserProfile extends Component {
   render() {
     // var name = this.props.user
     return (
+      <Router>
       <div class="container ">
         <div class="row">
           <div className="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 theprofile ">
@@ -52,8 +61,18 @@ export default class UserProfile extends Component {
               </div>
             </div>
           </div>
+          <Link to="/" className="nav-link">All Appointments</Link>
+          <Link to="/edit/:id" className="nav-link">Edit Appointment</Link>
+          <Link to="/create" className="nav-link">New Appointment</Link>
+
         </div>
+        <br/>
+          <Route path="/" exact component={AllAppointment} />
+          <Route path="/edit/:id" component={EdiAppointment} />
+          <Route path="/create" component={NewAppointment} />
       </div>
+
+      </Router>
     )
   }
 }

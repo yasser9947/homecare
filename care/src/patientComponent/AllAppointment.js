@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../css/patient.css'
 
 const Appointment = props => (
     <tr>
@@ -20,7 +21,7 @@ export default class AllAppointment extends Component {
         this.state = {appointments: []};
     }
     componentDidMount() {
-        axios.get('http://localhost:4001/user/auth/appointment/')
+        axios.get('http://localhost:4001/user/auth/appointment/patient/')
             .then(response => {
                 this.setState({ appointments: response.data });
             })
@@ -34,8 +35,6 @@ export default class AllAppointment extends Component {
             return <Appointment appointment={currentAppointment} key={i} />;
         })
     }
-    
-
 
   render() {
     return (
@@ -46,6 +45,7 @@ export default class AllAppointment extends Component {
                         <tr>
                             <th>Date</th>
                             <th>Reservation Reason</th>
+                            <th>Cancellation Reason</th>
                             <th>Action</th>
                         </tr>
                     </thead>
