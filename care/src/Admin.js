@@ -4,6 +4,7 @@ import AllPaition from './componedForAdmin/AllPaition'
 import Createdoctor from './componedForAdmin/Createdoctor'
 import ToolApoimont from './componedForAdmin/ToolApoimont'
 import UpdateDoctor from './componedForAdmin/UpdateDoctor'
+import Makeapitmrnt from './componedForAdmin/makeapitmrnt'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 // var view = "this.state.name"
@@ -33,7 +34,7 @@ export default class Admin extends Component {
                 view = <ToolApoimont />
                 break;
                 case "4":
-                view = <ToolApoimont />
+                view = <Makeapitmrnt />
                 break;
             case "5":
                 view = <AllPaition />

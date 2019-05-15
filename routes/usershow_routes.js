@@ -27,4 +27,15 @@ router.get('/all', (req, res)=>{
     .catch(err => {   
     })
   })
+  router.get('/apo', (req, res)=>{
+    Appointment.find()
+    .then((apo) =>{
+      console.log(apo)
+        res.json({apo})
+    })
+    .catch(err => {   
+    })
+  })
+
+  
   module.exports = router
