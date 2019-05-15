@@ -3,7 +3,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
   Route,
   Link
 } from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'; import { Container, Row, Button, Col, Alert } from 'reactstrap';
-import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'
+import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'; import Requstes from './Requstes'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
 // 
@@ -126,9 +126,14 @@ export default class App extends Component {
                   <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
+                
               </nav>
+
             </div>
+           
           </nav>
+          <br></br>
+          
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
@@ -139,9 +144,16 @@ export default class App extends Component {
             {/* registerHandler user*/}
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
+            <Route path="/Requstes" component={Requstes} />
             <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
 
           </div>
+          
+
+
+
+
+
           {/* footer */}
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">

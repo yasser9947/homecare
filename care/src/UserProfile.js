@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link
+
 } from 'react-router-dom'; 
 import AllAppointment from './patientComponent/AllAppointment';
 import EdiAppointment from './patientComponent/EdiAppointment';
@@ -43,6 +44,7 @@ export default class UserProfile extends Component {
               <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong>  </strong></h2>
+
                   <p><h5>Request a appointment</h5></p>
                  <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> <Link to="/create"> Request </Link> </button>
                 </div>
