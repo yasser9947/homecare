@@ -125,9 +125,14 @@ export default class App extends Component {
                   <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
+                
               </nav>
+
             </div>
+           
           </nav>
+          <br></br>
+          
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
@@ -142,6 +147,7 @@ export default class App extends Component {
             <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
 
           </div>
+          
 
 
 
