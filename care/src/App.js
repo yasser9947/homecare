@@ -6,6 +6,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
 import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'; import Requstes from './Requstes'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
+import Editprofile from './Editprofile'
 // 
 let header = {
   headers: {
@@ -137,7 +138,8 @@ export default class App extends Component {
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
-            <Route path="/UserProfile/:id" render={() => <UserProfile user={this.state} />} />
+            <Route path="/UserProfile/:id" render={(props) => <UserProfile user={this.state} {...props}/>} />
+
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
@@ -146,7 +148,9 @@ export default class App extends Component {
             <Route path="/FOQ" component={FOQ} />
             <Route path="/Requstes" component={Requstes} />
             <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
+            <Route path="/editprofile/:id" component={Editprofile} />
 
+{/* Editprofile */}
           </div>
           
 

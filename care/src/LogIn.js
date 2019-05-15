@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Input, Col, FormGroup, Label, Button} from '../node_modules/reactstrap'
 import {
-  BrowserRouter as Router,
-  Route,
+  // BrowserRouter as Router,
+  // Route,
   Link
 
 } from 'react-router-dom'
@@ -31,6 +31,7 @@ console.log(e)
           <Label for="exampleEmail" sm={2}>Password</Label>
           <Input  onChange ={this.props.changeHandler} name="password" type="password" />
       </FormGroup>
+
       <Button  onClick = {this.props.login}color="primary" size="lg" block> Login </Button>
 
 <br></br>
