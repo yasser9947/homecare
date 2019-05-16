@@ -158,6 +158,9 @@ export default class App extends Component {
 
 
           {/* footer */}
+          <div className="breakline">
+<img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png"  height='110' width='650' alt=""></img>
+</div>
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">
               <div className="row">

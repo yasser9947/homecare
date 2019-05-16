@@ -25,6 +25,9 @@ margin: 0px 10px;
 .breakline{
     text-align: center;
 }
+.questions{
+    text-align: center;
+}
 
 .navbar{
     color: darkblue;
@@ -36,6 +39,8 @@ margin: 0px 10px;
 
 .fixApp{
     font-family: 'Quicksand', sans-serif;
+    
+    font-size: 17px;
 }
 
     .info{ 

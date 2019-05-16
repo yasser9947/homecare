@@ -55,74 +55,74 @@ export default class FOQ extends Component {
 
 
     return (
-      <div>
+      <div className="questions">
         <div>
           <br></br>
           <Button color="info" onClick={this.toggle2} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 1 - How can I book a doctor?  </Button>
           <Collapse isOpen={this.state.collapse2}>
             <Card>
               <CardBody>
-                Answer
+              To book a doctor, you have to sign in in order to make an appointment.
   </CardBody>
             </Card>
           </Collapse>
 
           <br></br>
           <br></br>
-          <Button color="info" onClick={this.toggle1} style={{ marginBottom: '1rem', marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 2 - How can I book a doctor?  </Button>
+          <Button color="info" onClick={this.toggle1} style={{ marginBottom: '1rem', marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 2 - Is the appointmens based on special condition?  </Button>
           <Collapse isOpen={this.state.collapse1}>
             <Card>
               <CardBody>
-                Answer 
+                Usually for first time appointment, a doctor will arrive to you for a general check-up. 
            </CardBody>
             </Card>
           </Collapse>
 
 <br></br>
 <br></br>
-<Button color="info" onClick={this.toggle3} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 3 - How can I book a doctor?  </Button>
+<Button color="info" onClick={this.toggle3} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 3 - How can I see appointments status?  </Button>
           <Collapse isOpen={this.state.collapse3}>
             <Card>
               <CardBody>
-                Answer 
+                You can check your appointmen status through "User Profile". 
            </CardBody>
             </Card>
           </Collapse>
 
           <br></br>
           <br></br>
-<Button color="info" onClick={this.toggle4} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 4 - How can I book a doctor?  </Button>
+<Button color="info" onClick={this.toggle4} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 4 - Can I edit my personal information?  </Button>
           <Collapse isOpen={this.state.collapse4}>
             <Card>
               <CardBody>
-                Answer 
+                Sure, you can edit ypur personal information through "User Profile".  
            </CardBody>
             </Card>
           </Collapse>
           <br></br>
           <br></br>
-<Button color="info" onClick={this.toggle5} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 5 - How can I book a doctor?  </Button>
+<Button color="info" onClick={this.toggle5} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 5 - How can I check the medicine provided by the doctor?  </Button>
           <Collapse isOpen={this.state.collapse5}>
             <Card>
               <CardBody>
-                Answer 
+                After the doctor leaves, you will find a prescription from your doctor in your profile. 
            </CardBody>
             </Card>
           </Collapse>
 
           <br></br>
           <br></br>
-          <Button color="info" onClick={this.toggle6} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 6 - How can I book a doctor?  </Button>
+          <Button color="info" onClick={this.toggle6} style={{ marginBottom: '1rem',marginLeft: '1rem', width: '600px', textAlign: 'left' }}> Question 6 - Can I cancel my order?  </Button>
           <Collapse isOpen={this.state.collapse6}>
             <Card>
               <CardBody>
-                Answer 
+                Sure, you can show, edit, and cancel your order. 
            </CardBody>
             </Card>
           </Collapse>
         </div>
 
-
+<br></br> <br></br>
       </div>
     )
   }

@@ -8,7 +8,8 @@ export default class SingUp extends Component {
     return (
 
       <div>
-        <h1> Sign Up </h1>
+        <h1> <b> Sign Up </b></h1>
+        <br></br>
         <Form>
           <Row form>
             <Col md={6}>
@@ -54,8 +55,9 @@ export default class SingUp extends Component {
             <Input type="checkbox" name="check" id="exampleCheck" />
             <Label for="exampleCheck" check>Check me out</Label>
           </FormGroup> */}
-          <Link className="thenave" to="/" ><Button onClick={this.props.registerHandler}> Register </Button></Link>{' '} 
+          <Link className="thenave" to="/" ><Button onClick={this.props.registerHandler}color="primary" size="md" block> Register </Button></Link>{' '} 
         </Form>
+        <br></br> <br></br>
       </div>
     )
   }

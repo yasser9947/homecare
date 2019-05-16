@@ -66,9 +66,7 @@ at the convenience of your own home </h4>
 <h3> <b> 3) </b> Wait for your Doctor to Arrive!</h3>
 
 <br></br><br></br><br></br><br></br>
-<div className="breakline">
-<img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png"  height='110' width='650' alt=""></img>
-</div>
+
  
  <br></br>
 
