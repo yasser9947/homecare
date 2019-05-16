@@ -10,6 +10,7 @@ const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const Appointment=require('./models/appointment')
+const usershow_routes = require('./routes/usershow_routes')
 
 
 //models
@@ -68,6 +69,7 @@ app.use('/user/', passport.authenticate('jwt', { session: false }), require('./r
 
 
 app.use('/user', user_routes)
+app.use('/usershow', usershow_routes)
 
 //cannot find route
 app.get('/', (req, res) => {
