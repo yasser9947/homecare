@@ -8,38 +8,39 @@ export default class SingUp extends Component {
     return (
 
       <div>
-        <h1> Sing up page</h1>
+        <h1> Sign Up </h1>
         <Form>
           <Row form>
             <Col md={6}>
               <FormGroup>
                 <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" onChange={this.props.change} />
+                <Input type="email" name="email" id="exampleEmail" placeholder="e.g example@gmail.com" onChange={this.props.change} />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label for="examplePassword">Password</Label>
-                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" onChange={this.props.change} />
+                <Input type="password" name="password" id="examplePassword" placeholder="******" onChange={this.props.change} />
               </FormGroup>
             </Col>
           </Row>
           <FormGroup>
             <Label for="examplenationality">Nationality</Label>
-            <Input type="text" name="nationality" id="examplenationality" placeholder="1234 Main St" onChange={this.props.change} />
+            <Input type="text" name="nationality" id="examplenationality" placeholder="" onChange={this.props.change} />
           </FormGroup>
 
           <Row form>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="exampleCity">City</Label>
-                <Input type="text" name="city" id="exampleCity" onChange={this.props.change} />
-              </FormGroup>
-            </Col>
+           
             <Col md={4}>
               <FormGroup>
                 <Label for="exampleState">Name</Label>
                 <Input type="text" name="username" id="exampleState" onChange={this.props.change} />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="exampleCity">City</Label>
+                <Input type="text" name="city" id="exampleCity" onChange={this.props.change} />
               </FormGroup>
             </Col>
             <Col md={2}>
@@ -49,11 +50,11 @@ export default class SingUp extends Component {
               </FormGroup>
             </Col>
           </Row>
-          <FormGroup check>
+          {/* <FormGroup check>
             <Input type="checkbox" name="check" id="exampleCheck" />
             <Label for="exampleCheck" check>Check me out</Label>
-          </FormGroup>
-          <Link className="thenave" to="/" ><Button onClick={this.props.registerHandler}>Sign in</Button></Link>{' '} 
+          </FormGroup> */}
+          <Link className="thenave" to="/" ><Button onClick={this.props.registerHandler}> Register </Button></Link>{' '} 
         </Form>
       </div>
     )

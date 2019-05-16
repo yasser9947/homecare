@@ -39,7 +39,7 @@ export default class App extends Component {
   }
   // log in method
   loginHandler = (e) => {
-    alert("ok")
+    alert("Successfully Loged-in")
     axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
@@ -59,7 +59,7 @@ export default class App extends Component {
         let data = { ...this.state }
         data.hasError = true
         this.setState(data)
-        console.log("eroor")
+        console.log("error")
 
       })
 
@@ -100,9 +100,9 @@ export default class App extends Component {
 
   render() {
 
-    const showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to="/UserProfile"> UserProfile</Link>
+    const showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">Log-in</Link> : <Link className="thenave" to="/UserProfile"> User Profile</Link>
 
-    const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp">rigester</Link>
+    const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp"> Register </Link>
 
 
 
@@ -159,27 +159,26 @@ export default class App extends Component {
             <div className="container-fluid text-center text-md-left">
               <div className="row">
                 <div className="col-md-6 mt-md-0 mt-3">
-                  <h5 className="text-uppercase">Footer Content</h5>
-                  <p>Here you can use rows and columns to organize your footer content.</p>
+                  <h5 className="text-uppercase"></h5>
+                  
                 </div>
                 <hr className="clearfix w-100 d-md-none pb-3" />
                 <div className="col-md-3 mb-md-0 mb-3">
                   <h5 className="text-uppercase">Links</h5>
                   <ul className="list-unstyled">
                     <li>
-                      <a href="#!"><Link to="/ContactUS">ContactUS</Link>{' '}</a>
+                      <a href="#!"><Link to="/ContactUS">Contact Us</Link>{' '}</a>
                     </li>
-                    <a href="#!"><Link to="/FOQ">FOQ</Link>{' '}</a>
+                    <a href="#!"><Link to="/FOQ">FAQ</Link>{' '}</a>
+                    
                     <li>
-                      <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!">Link 4</a>
+                      <a href="#!"> Terms and Conditions </a>
                     </li>
                     <li>
-                      <a href="#!"><Link to="/Admin">Admin Dashboard</Link>{' '}</a>
+                      <a href="#!"><Link to="/Admin"> Admin Dashboard </Link>{' '}</a>
                     </li>
                   </ul>
+                  <p>© Copyright 2019. All Rights Reserved. </p>
                 </div>
               </div>
             </div>

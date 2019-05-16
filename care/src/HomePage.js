@@ -50,6 +50,15 @@ export default class HomePage extends Component {
   </Carousel.Item>
 </Carousel>
 </div>
+<br></br>
+<br></br>
+
+<h4> About HomeCare</h4>
+<h5> is an on-demand healthcare app revolutionising the way medical services are provided. 
+Through our innovative and easy to use interface, 
+you are clicks away from gaining access to quality medical care 
+at the convenience of your own home or work.</h5>
+
 
 
 

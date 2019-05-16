@@ -1,7 +1,5 @@
 
-.fixApp{
-  /* display: flex; */
-}
+
 .navlogo{
   background-color: #e3f2fd ; 
 
@@ -17,14 +15,24 @@ margin: 0px 10px;
   height: 800px;
 } */
 
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
 /* body
 {
     font-family: 'Lato', 'sans-serif';
     } */
+
+    .info{
+      
+      display: flex;
+      text-align:center;
+      display: block;
+     
+    }
+
 .profile {
     min-height: 355px;
     display: inline-block;
+    
     }
 figcaption.ratings
 {
@@ -112,6 +120,6 @@ margin-left: 0px auto !important;
   }
 .center-img{
     text-align:center;
-    
+
 
 }
