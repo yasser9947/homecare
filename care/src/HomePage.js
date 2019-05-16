@@ -7,7 +7,7 @@ export default class HomePage extends Component {
         return (
      
 
-          <div>
+          <div className="font">
 <div className="center-img">
 <Carousel>
   <Carousel.Item>
@@ -17,8 +17,8 @@ export default class HomePage extends Component {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, ullam numquam aspernatur impedit at consectetur quidem dolorem, eaque magni ad suscipit perspiciatis alias itaque vero aliquid quia quae quasi excepturi?.</p>
+      <h1> Right Care </h1>
+      <h4> HomeCare will provide you with the right care needed supervised by specialist doctors</h4>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -32,8 +32,8 @@ export default class HomePage extends Component {
    
 
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eveniet quae vero, nisi impedit iure cum tenetur, sequi porro recusandae quaerat dicta perferendis quas dolorum autem ipsum assumenda adipisci non.</p>
+      <h1>Right Time</h1>
+      <h4> Don't worry about hospital time waiting, HomeCare will provide you with fast service accoirding to your time appointment </h4>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -44,8 +44,8 @@ export default class HomePage extends Component {
     />
 
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi earum eligendi nemo. Sed, qui vel veniam quos, modi non quis molestiae deleniti, officia quas nemo doloremque praesentium. Blanditiis, quod nisi.</p>
+      <h1>Right Place</h1>
+      <h4> HomeCare will provide you with excellent care on your place, you are just a click away! </h4>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
@@ -53,15 +53,24 @@ export default class HomePage extends Component {
 <br></br>
 <br></br>
 
-<h4> About HomeCare</h4>
-<h5> is an on-demand healthcare app revolutionising the way medical services are provided. 
+<h1> About <b>HomeCare</b></h1>
+<br></br>
+<h4> is a healthcare website that provide you with medical service at your house. 
 Through our innovative and easy to use interface, 
 you are clicks away from gaining access to quality medical care 
-at the convenience of your own home or work.</h5>
+at the convenience of your own home </h4>
+<br></br> <br></br>
+<h1> How <b>HomeCare</b> Works</h1>
+<h3> <b> 1) </b> Sign Up and Enter your Details </h3> 
+<h3> <b> 2) </b> Book an Appoitnment on your desired Date&Time </h3>
+<h3> <b> 3) </b> Wait for your Doctor to Arrive!</h3>
 
-
-
-
+<br></br><br></br><br></br><br></br>
+<div className="breakline">
+<img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png"  height='110' width='650' alt=""></img>
+</div>
+ 
+ <br></br>
 
 
           </div>

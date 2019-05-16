@@ -6,6 +6,7 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
 import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'; import Requstes from './Requstes'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalExample from './js/jsHomePage'
+ 
 // 
 let header = {
   headers: {
@@ -118,7 +119,9 @@ export default class App extends Component {
         <div class="fixApp">
           {/* navbar */}
           <nav className="navbar navbar-light navlogo" >
-            <img src="http://beyondfaithhomecare.com/wp-content/themes/beyondfaith/images/LifeCareHomeCare_COLOR_logo_BF%20Tag-01.png" className="" height='80' width='170' alt="" />
+          
+            <img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png" className="" height='80' width='170' alt="" />
+            {/* <h3>HomeCare</h3> */}
             <div className="rightNav">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -158,13 +161,10 @@ export default class App extends Component {
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">
               <div className="row">
-                <div className="col-md-6 mt-md-0 mt-3">
-                  <h5 className="text-uppercase"></h5>
-                  
-                </div>
+                
                 <hr className="clearfix w-100 d-md-none pb-3" />
                 <div className="col-md-3 mb-md-0 mb-3">
-                  <h5 className="text-uppercase">Links</h5>
+                  <h5 className="text-uppercase"> Important Links</h5>
                   <ul className="list-unstyled">
                     <li>
                       <a href="#!"><Link to="/ContactUS">Contact Us</Link>{' '}</a>
@@ -178,11 +178,16 @@ export default class App extends Component {
                       <a href="#!"><Link to="/Admin"> Admin Dashboard </Link>{' '}</a>
                     </li>
                   </ul>
-                  <p>© Copyright 2019. All Rights Reserved. </p>
+                  
+
+
+                  
                 </div>
               </div>
             </div>
+            
           </footer>
+          <p>© Copyright 2019. All Rights Reserved. </p>
         </div>
 
       </Router>

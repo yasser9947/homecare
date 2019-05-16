@@ -10,6 +10,7 @@ margin: 0px 10px;
 }
 .thenave{
   margin: 0px 10px;
+  color: darkblue;
 }
 /* .medle{
   height: 800px;
@@ -21,12 +22,26 @@ margin: 0px 10px;
     font-family: 'Lato', 'sans-serif';
     } */
 
-    .info{
-      
+.breakline{
+    text-align: center;
+}
+
+.navbar{
+    color: darkblue;
+}
+.font{
+    font-family: 'Quicksand', sans-serif;
+    background-image: "https://png.pngtree.com/element_origin_min_pic/17/03/17/69b836bee029849d8e144dfc8c1b326b.jpg";
+}
+
+.fixApp{
+    font-family: 'Quicksand', sans-serif;
+}
+
+    .info{ 
       display: flex;
       text-align:center;
       display: block;
-     
     }
 
 .profile {
@@ -120,6 +135,17 @@ margin-left: 0px auto !important;
   }
 .center-img{
     text-align:center;
+}
+.center-img, h1{
+color: darkblue;
+text-align: center;
+ 
+}
+.row{
+    text-align: center;
+}
 
-
+.container-fluid, p{
+    text-align: center;
+    
 }
