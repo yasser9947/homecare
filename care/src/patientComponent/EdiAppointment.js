@@ -13,21 +13,24 @@ export default class EdiAppointment extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            date: '',
-            reservation_reason: '',
-            cancellation_reason: '',
-            canceled: false
+            date: this.props.date,
+            reservation_reason: this.props.reservation_reason,
+            cancellation_reason: this.props.cancellation_reason,
+            canceled: this.props.canceled
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id)
+        // axios.get('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id)
+         axios.get('http://localhost:4001/appointment/'+this.props.match.params.id)
             .then(response => {
+                console.log(this.props.match.params.id)
+                console.log(response.data.appointment)
                 this.setState({
-                    date: response.data.date,
-                    reservation_reason: response.data.reservation_reason,
-                    cancellation_reason: response.data.cancellation_reason,
-                    canceled: response.data.canceled
+                    date: response.data.appointment.date,
+                    reservation_reason: response.data.appointment.reservation_reason,
+                    cancellation_reason: response.data.appointment.cancellation_reason,
+                    canceled: response.data.appointment.canceled
                 })   
             })
             .catch(function (error) {
@@ -68,10 +71,11 @@ export default class EdiAppointment extends Component {
             canceled: this.state.canceled
         };
         console.log(obj);
-        axios.post('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
+        // axios.post('http://localhost:4001/user/auth/appointment/'+this.props.match.params.id, obj)
+         axios.put('http://localhost:4001/appointment/'+this.props.match.params.id, obj)
+        .then(res => console.log(res.data));
         
-        this.props.history.push('/user/auth/');//return to user profile
+        this.props.history.push('/UserProfile/');//return to user profile
     }
 
 
@@ -82,7 +86,7 @@ export default class EdiAppointment extends Component {
         <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
                         <label>Date: </label>
-                        <input  type="text"
+                        <input  type="Date"
                                 className="form-control"
                                 value={this.state.date}
                                 onChange={this.onChangeDate}
@@ -113,9 +117,9 @@ export default class EdiAppointment extends Component {
                                 id="completedCheckbox"
                                 type="checkbox"
                                 name="canceledCheckbox"
-                                onChange={this.onChangeTodoCompleted}
-                                checked={this.state.todo_completed}
-                                value={this.state.todo_completed}
+                                onChange={this.onChangeAppointmentCanceled}
+                                checked={this.state.canceled}
+                                value={this.state.canceled}
                                 />
                         <label className="form-check-label" htmlFor="canceledCheckbox">
                             Canceled

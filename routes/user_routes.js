@@ -166,7 +166,7 @@ router.delete('/appointment/:id', (req, res)=>{
 //display all users
   router.get('/', (req, res) => {
 
-    User.find({})
+    User.find()
     .then(user =>{
       res.status(200).json({ user : user })
       return false
@@ -182,6 +182,16 @@ router.delete('/appointment/:id', (req, res)=>{
     User.findById(req.params.id)
     .then((user) =>{
         res.json({user})
+    })
+    .catch(err => {   
+    })
+  })
+
+  router.get('/all', (req, res)=>{
+    User.find()
+    .then((users) =>{
+      console.log(users)
+        res.json({users})
     })
     .catch(err => {   
     })

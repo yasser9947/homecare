@@ -10,8 +10,9 @@ const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const Appointment=require('./models/appointment')
+const usershow_routes = require('./routes/usershow_routes')
 
-
+const User =require('./models/user')
 //models
 // const Appointment=require('./models/appointment')
 // const Medicine=require('./models/medicine')
@@ -68,6 +69,7 @@ app.use('/user/', passport.authenticate('jwt', { session: false }), require('./r
 
 
 app.use('/user', user_routes)
+app.use('/usershow', usershow_routes)
 
 //cannot find route
 app.get('/', (req, res) => {
@@ -75,6 +77,7 @@ app.get('/', (req, res) => {
     res.send("server is running")
 })
 
+//display all appointments belong to one patient
 app.get('/appointment/patient/:id', (req, res) => {
     console.log(req.params.id)
     Appointment.find({ patient_id: req.params.id })
@@ -88,6 +91,7 @@ app.get('/appointment/patient/:id', (req, res) => {
     })
   })
 
+  //create appointment
   app.post('/appointment', (req, res)=>{
 
     let data = {
@@ -111,6 +115,51 @@ app.get('/appointment/patient/:id', (req, res) => {
       })
     })
 
+    //show one appointment
+app.get('/appointment/:id', (req, res)=>{
+  Appointment.findById(req.params.id)
+  .then((appointment) =>{
+      res.json({appointment})
+  })
+  .catch(err => { 
+    res.json({message : err}) 
+  })
+})
+    //update one appointment
+    app.put('/appointment/:id', (req, res)=>{
+        let update = req.body
+        console.log(req.params.id)
+        Appointment.findByIdAndUpdate(req.params.id, update)
+        .then(() =>{
+            res.json({message: "update done"});
+        })
+        .catch(err => {
+            res.json({message: "there is a problem", err : err})
+        })
+      })
+
+//display one user
+app.get('/profile/:id', (req, res)=>{
+  User.findById(req.params.id)
+  .then((user) =>{
+      res.json({user})
+  })
+  .catch(err => {   
+  })
+})
+
+//update user
+app.put('/profile/:id', (req, res)=>{
+  let update = req.body
+
+  User.findByIdAndUpdate(req.params.id, update)
+  .then(() =>{
+      res.json({message: "update done"});
+  })
+  .catch(err => {
+      res.json({message: "there is a problem"})
+  })
+})
 
 app.use('*', (req, res) => {
     res.status(201).json({ message: "Data not found!" })

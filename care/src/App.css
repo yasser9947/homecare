@@ -141,6 +141,7 @@ margin-left: 0px auto !important;
 .center-img{
     text-align:center;
 }
+
 .center-img, h1{
 color: darkblue;
 text-align: center;
@@ -154,3 +155,8 @@ text-align: center;
     text-align: center;
     
 }
+
+.creetdoctor{
+    margin: 40px;
+}
+

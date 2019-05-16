@@ -2,11 +2,25 @@ import React, { Component } from 'react'; import axios from 'axios'; import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'; import { getToken, setToken, logout } from './services/auth'; import { Container, Row, Button, Col, Alert } from 'reactstrap';
-import './App.css'; import HomePage from './HomePage'; import LogIn from './LogIn'; import SingUp from './SingUp'; import ContactUS from './ContactUS'; import FOQ from './FOQ'; import Admin from './Admin'; import UserProfile from './UserProfile'; import Requstes from './Requstes'
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+} from 'react-router-dom';
+import { getToken, setToken, logout } from './services/auth';
+import { Container, Row, Button, Col, Alert, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import './App.css'; import HomePage from './HomePage';
+import LogIn from './LogIn'; import SingUp from './SingUp';
+import ContactUS from './ContactUS';
+import FOQ from './FOQ'; import Admin from './Admin';
+import UserProfile from './UserProfile';
+import Requstes from './Requstes'
+
+import jwt_decode from 'jwt-decode'
+
 import ModalExample from './js/jsHomePage'
  
+
+import Editprofile from './Editprofile'
+
+
+
 // 
 let header = {
   headers: {
@@ -23,8 +37,10 @@ export default class App extends Component {
     medicine: [],
     user: "",
     errorMsg: '',
-    isAuthenticated: true,
+    isAuthenticated: false,
     hasError: false,
+    user_id : 0 ,
+    UserProfile:`/UserProfile/${this.user_id}`
 
   }
   // get the json file axios 
@@ -52,8 +68,9 @@ export default class App extends Component {
           data.hasError = false
           this.setState(data)
           // this.getGames()
+          console.log(response.data.user._id)
           console.log(response)
-          window.location=`/UserProfile/${response.data.user._id}`
+          window.location = `/UserProfile/${response.data.user._id}`
         }
       })
       .catch(err => {
@@ -73,6 +90,7 @@ export default class App extends Component {
     data.user = ""
     data.email = ""
     data.password = ""
+    
     data.games = []
 
     this.setState(data)
@@ -88,7 +106,7 @@ export default class App extends Component {
       user_rule: this.state.user_rule
     }
 
-    axios.post('http://localhost:4001/user/auth/register',user)
+    axios.post('http://localhost:4001/user/auth/register', user)
       .then(response => {
         console.log(response)
         console.log("masseg")
@@ -97,19 +115,30 @@ export default class App extends Component {
       .catch(err => (console.log("yaa not working" + err)))
   }
   // 
-
+  componentDidMount() {
+    if (getToken()) {
+      let decoded = jwt_decode(getToken())
+      let data = { ...this.state }
+      data.user = decoded
+      data.isAuthenticated = true
+      
+      this.setState(data)
+      console.log("ok token here")
+    }
+  }
 
   render() {
+// var id = `/UserProfile/${this.state.user_id}`
+console.log( "id  " + this.state.user_id);
 
-    const showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">Log-in</Link> : <Link className="thenave" to="/UserProfile"> User Profile</Link>
+
+    var showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to={this.state.UserProfile}> UserProfile</Link>
 
     const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp"> Register </Link>
 
 
 
-    console.log(this.state)
-
-    console.log(this.state);
+   
 
     return (
 
@@ -125,22 +154,23 @@ export default class App extends Component {
             <div className="rightNav">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"> <Link className="thenave" to="/" > Home Page</Link>{' '}</a></li>
-                  <li class="breadcrumb-item"><a href="#">  {Logout} {' '}</a></li>
+                  <li class="breadcrumb-item"> <Link className="thenave" to="/" > Home Page</Link>{' '}</li>
+                  <li class="breadcrumb-item">  {Logout} {' '}</li>
                   <li class="breadcrumb-item active" aria-current="page"> {showLogin}{' '}</li>
                 </ol>
-                
+
               </nav>
 
             </div>
-           
+
           </nav>
           <br></br>
-          
+
           <div class="medle">
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/UserProfile" component={UserProfile} /> */}
-            <Route path="/UserProfile/:id" render={() => <UserProfile user={this.state} />} />
+            <Route path="/UserProfile/:id" render={(props) => <UserProfile user={this.state} {...props} />} />
+
 
             <Route path="/SingUp" render={() => <SingUp registerHandler={this.registerHandler} user={this.state} change={this.changeHandler} />} />
             <Route path="/LogIn" render={(props) => <LogIn changeHandler={this.changeHandler} {...props} login={this.loginHandler} />} />
@@ -148,10 +178,12 @@ export default class App extends Component {
             <Route path="/ContactUS" component={ContactUS} />
             <Route path="/FOQ" component={FOQ} />
             <Route path="/Requstes" component={Requstes} />
-            <Route path="/Admin" render={(props) => <Admin user = {this.state.user}  />} />
+            <Route path="/Admin" render={(props) => <Admin user={this.state.user} />} />
+            <Route path="/editprofile/:id" component={Editprofile} />
 
+            {/* Editprofile */}
           </div>
-          
+
 
 
 
