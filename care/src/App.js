@@ -15,7 +15,10 @@ import Requstes from './Requstes'
 import jwt_decode from 'jwt-decode'
 
 import ModalExample from './js/jsHomePage'
+ 
+
 import Editprofile from './Editprofile'
+
 
 
 // 
@@ -53,7 +56,7 @@ export default class App extends Component {
   }
   // log in method
   loginHandler = (e) => {
-    alert("ok")
+    alert("Successfully Loged-in")
     axios.post('http://localhost:4001/user/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
@@ -74,7 +77,7 @@ export default class App extends Component {
         let data = { ...this.state }
         data.hasError = true
         this.setState(data)
-        console.log("eroor")
+        console.log("error")
 
       })
 
@@ -128,9 +131,10 @@ export default class App extends Component {
 // var id = `/UserProfile/${this.state.user_id}`
 console.log( "id  " + this.state.user_id);
 
+
     var showLogin = (!this.state.isAuthenticated) ? <Link className="thenave" to="/logIn">log in</Link> : <Link className="thenave" to={this.state.UserProfile}> UserProfile</Link>
 
-    const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp">rigester</Link>
+    const Logout = (this.state.isAuthenticated) ? <Link ><ModalExample logout={this.logout} /></Link> : <Link className="thenave" to="/SingUp"> Register </Link>
 
 
 
@@ -144,7 +148,9 @@ console.log( "id  " + this.state.user_id);
         <div class="fixApp">
           {/* navbar */}
           <nav className="navbar navbar-light navlogo" >
-            <img src="http://beyondfaithhomecare.com/wp-content/themes/beyondfaith/images/LifeCareHomeCare_COLOR_logo_BF%20Tag-01.png" className="" height='80' width='170' alt="" />
+          
+            <img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png" className="" height='80' width='170' alt="" />
+            {/* <h3>HomeCare</h3> */}
             <div className="rightNav">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -184,35 +190,39 @@ console.log( "id  " + this.state.user_id);
 
 
           {/* footer */}
+          <div className="breakline">
+<img src="https://images.vexels.com/media/users/3/161755/isolated/preview/58947b231e106b969b16035f37b6980f-heartbeat-with-medical-stethoscope-by-vexels.png"  height='110' width='650' alt=""></img>
+</div>
           <footer className="page-footer font-small blue pt-4">
             <div className="container-fluid text-center text-md-left">
               <div className="row">
-                <div className="col-md-6 mt-md-0 mt-3">
-                  <h5 className="text-uppercase">Footer Content</h5>
-                  <p>Here you can use rows and columns to organize your footer content.</p>
-                </div>
+                
                 <hr className="clearfix w-100 d-md-none pb-3" />
                 <div className="col-md-3 mb-md-0 mb-3">
-                  <h5 className="text-uppercase">Links</h5>
+                  <h5 className="text-uppercase"> Important Links</h5>
                   <ul className="list-unstyled">
                     <li>
-                      <a href="#!"><Link to="/ContactUS">ContactUS</Link>{' '}</a>
+                      <a href="#!"><Link to="/ContactUS">Contact Us</Link>{' '}</a>
                     </li>
-                    <a href="#!"><Link to="/FOQ">FOQ</Link>{' '}</a>
+                    <a href="#!"><Link to="/FOQ">FAQ</Link>{' '}</a>
+                    
                     <li>
-                      <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!">Link 4</a>
+                      <a href="#!"> Terms and Conditions </a>
                     </li>
                     <li>
-                      <a href="#!"><Link to="/Admin">Admin Dashboard</Link>{' '}</a>
+                      <a href="#!"><Link to="/Admin"> Admin Dashboard </Link>{' '}</a>
                     </li>
                   </ul>
+                  
+
+
+                  
                 </div>
               </div>
             </div>
+            
           </footer>
+          <p>© Copyright 2019. All Rights Reserved. </p>
         </div>
 
       </Router>

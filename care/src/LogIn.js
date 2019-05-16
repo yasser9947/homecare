@@ -23,13 +23,13 @@ console.log(e)
     <>
     <Col sm={3} md={4} className="mx-auto">
      <FormGroup>
-       <h3> Log-In </h3>
+       <h3> Please enter your registered Email and Password </h3>
           <Label for="exampleEmail" sm={2}>Email</Label>
-        <Input name="email" onChange ={this.props.changeHandler} />
+        <Input name="email" placeholder="e.g example@gmail.com" onChange ={this.props.changeHandler} />
      </FormGroup>
      <FormGroup>
           <Label for="exampleEmail" sm={2}>Password</Label>
-          <Input  onChange ={this.props.changeHandler} name="password" type="password" />
+          <Input  onChange ={this.props.changeHandler} name="password" placeholder="******" type="password" />
       </FormGroup>
 
       <Button  onClick = {this.props.login}color="primary" size="lg" block> Login </Button>
