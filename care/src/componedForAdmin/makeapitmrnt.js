@@ -9,7 +9,8 @@ import { Table } from 'reactstrap';
 export default class AllPaition extends Component {
     state = {
 apo : [],
-users :[]
+users :[],
+doc: []
         
     }
 
@@ -37,6 +38,16 @@ this.setState(deta)
 
   })
   .catch(err => (console.log( + err)))
+  axios.get('http://localhost:4001/usershow/ald')
+  .then(res => {
+let deta = {...this.state} 
+deta.doc = res.data.users
+this.setState(deta)
+
+    console.log("masseg")
+
+  })
+  .catch(err => (console.log( + err)))
 }
 idToname =() =>{
     this.state.apo.forEach(element => {
@@ -55,15 +66,37 @@ idToname =() =>{
     //   user._id
     console.log(this.state.users)
     console.log(this.state.apo)
+var doc = this.state.doc.map((el ,i) =>{
+
+return <option value={i}>{el.username}</option>
+})
     var Data = this.state.apo.map((ele, i) => {
+        var status;
+        if (ele.status == 0 ){
+            status = "requst"
+        }
+        else if  (ele.status == 1 ){
+
+        }
+        else {
+
+        }
 
       return <tr>
         
       <th scope="row">{i+1}</th>
       <td>{ele.name}</td>
-      <td>{ele.nationality}</td> 
-      <td>{ele.reservation_reason}</td>
+      <td>{ele.reservation_reason}</td> 
       <td>{ele.date}</td>
+      <td>{status}</td>
+
+      <td><select name="doc">
+     
+      {doc}
+ 
+</select></td>
+      <td>{status}</td>
+
      
     </tr>
   })
@@ -74,9 +107,13 @@ idToname =() =>{
           <tr>
             <th>#</th>
             <th> Name</th>
-            <th> nationality</th>
-            <th>reasons</th>
+            <th> reasons</th>
             <th>Data and time</th>
+            <th>status</th>
+            <th>change status</th>
+            <th>choose  doctor</th>
+
+
           </tr>
         </thead>
         <tbody>

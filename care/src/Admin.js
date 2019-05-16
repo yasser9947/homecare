@@ -56,8 +56,8 @@ export default class Admin extends Component {
                       
                         <div onClick={this.clicklhandler} id="1" class="1 thec"><h5 >creact a doctor</h5></div>
                         <div onClick={this.clicklhandler} id="2" class="2 thec"><h5>see all doctors</h5></div>
-                        <div onClick={this.clicklhandler} id="3" class="3 thec"><h5>all apoitmint and update</h5></div>
-                        <div id="4" onClick={this.clicklhandler} class="4 thec"><h5>make apoitment</h5> </div>
+                        <div onClick={this.clicklhandler} id="3" class="3 thec"><h5>make apoitment</h5></div>
+                        <div id="4" onClick={this.clicklhandler} class="4 thec"><h5> all apoitmint and update</h5> </div>
                         <div onClick={this.clicklhandler} id="5" class="5 thec"><h5>see all pittion</h5></div>
                         <div id="5" class="6 thec"><h5>update</h5></div>
                     </div>
