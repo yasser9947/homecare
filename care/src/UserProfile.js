@@ -17,6 +17,7 @@ export default class UserProfile extends Component {
     // var name = this.props.user
     console.log(this.props.match.params.id)
     console.log(this.props.match.params);
+    console.log(this.props)
     
     return (
       <Router>
@@ -29,7 +30,8 @@ export default class UserProfile extends Component {
                 <div class="col-xs-12 col-sm-8">
                   <h2>
                     {/* {name} */}
-                    name
+                    {/* {this.props} */}
+                    
                     </h2>
                   
                 </div>
@@ -45,12 +47,12 @@ export default class UserProfile extends Component {
                   <h2><strong></strong></h2>
                   <p><h5>update </h5></p>
                   <br/>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/edit/:id"> Update </Link> </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to={`/edit/${this.props.match.params.id}`}> Update </Link> </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                   <h2><strong></strong></h2>
                   <p><h5>view the appointment </h5></p>
-                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/"> View All Appointment </Link> </button>
+                  <button class="btn btn-info btn-block"><span class="fa fa-user"></span><Link to="/"> View </Link> </button>
                 </div>
                 <h2><strong></strong></h2>
                 <div class="col-xs-12 col-sm-4 emphasis">
@@ -79,7 +81,7 @@ export default class UserProfile extends Component {
         </div>
         <br/>
           <Route path="/" exact component={AllAppointment} />
-          <Route path="/edit/:id" component={EdiAppointment} />
+          <Route path={`/edit/:id`} component={EdiAppointment} />
           <Route path="/create" component={NewAppointment} />
       </div>
 

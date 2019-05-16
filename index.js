@@ -12,7 +12,7 @@ const passport = require('passport')
 const Appointment=require('./models/appointment')
 const usershow_routes = require('./routes/usershow_routes')
 
-
+const User =require('./models/user')
 //models
 // const Appointment=require('./models/appointment')
 // const Medicine=require('./models/medicine')
@@ -137,6 +137,29 @@ app.get('/appointment/:id', (req, res)=>{
             res.json({message: "there is a problem", err : err})
         })
       })
+
+//display one user
+app.get('/profile/:id', (req, res)=>{
+  User.findById(req.params.id)
+  .then((user) =>{
+      res.json({user})
+  })
+  .catch(err => {   
+  })
+})
+
+//update user
+app.put('/profile/:id', (req, res)=>{
+  let update = req.body
+
+  User.findByIdAndUpdate(req.params.id, update)
+  .then(() =>{
+      res.json({message: "update done"});
+  })
+  .catch(err => {
+      res.json({message: "there is a problem"})
+  })
+})
 
 app.use('*', (req, res) => {
     res.status(201).json({ message: "Data not found!" })

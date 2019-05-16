@@ -7,8 +7,8 @@ const bcrypt = require('bcrypt')
 
 
 const userSchema = new Schema({
- email : { type: String, required: true, unique : true},
  username : { type: String, required: true, unique : true},
+ email : { type: String, required: true, unique : true},
  password : { type: String, required: true},
  nationality:{type: String},
  user_rule:{type: Number,default:1},//0 admin , 1 patient, 2 doctor
