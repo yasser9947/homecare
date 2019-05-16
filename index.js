@@ -12,7 +12,7 @@ const passport = require('passport')
 const Appointment=require('./models/appointment')
 const usershow_routes = require('./routes/usershow_routes')
 
-
+const User =require('./models/user')
 //models
 // const Appointment=require('./models/appointment')
 // const Medicine=require('./models/medicine')
